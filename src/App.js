@@ -2,10 +2,11 @@ import React from 'react';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
 import WeatherDetail from "./components/WeatherDetail";
+import API from "./utils/API";
 import './App.scss';
 
 function App() {
-  console.log(process.env.REACT_APP_DARK_SKY_KEY)
+  API.getWeather().then(res => console.log(res.data))
   return (
     <div className="App">
       <Container>
