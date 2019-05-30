@@ -1,0 +1,12 @@
+.container {
+    // height: fit-content;
+    // width: fit-content;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container .weatherDetail {
+    margin: 10px;
+}

@@ -5,6 +5,7 @@ import WeatherDetail from "./components/WeatherDetail";
 import './App.scss';
 
 function App() {
+  console.log(process.env.REACT_APP_DARK_SKY_KEY)
   return (
     <div className="App">
       <Container>
