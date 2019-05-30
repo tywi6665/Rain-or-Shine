@@ -8,13 +8,21 @@ import './App.scss';
 function App() {
 
   const [currentWeather, setCurrentWeather] = useState(null)
+  const [minuteWeather, setMinuteWeather] = useState(null)
+  const [hourWeather, setHourWeather] = useState(null)
+  const [timeOfDay, setTimeOfDay] = useState(Date.now())
+
 
   useEffect(() => {
     API.getWeather()
-      .then(res => setCurrentWeather(res.data.currently))
+      .then(res => {
+        let conditions = res.data.currently
+        conditions.icon = conditions.icon.replace(/-/g, "")
+        setCurrentWeather(conditions)
+      })
   }, []);
 
-  console.log(currentWeather)
+  console.log(currentWeather, timeOfDay)
 
   return (
     <div className="App">

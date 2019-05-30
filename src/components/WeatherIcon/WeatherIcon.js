@@ -4,7 +4,7 @@ import "./WeatherIcon.scss";
 
 const WeatherIcon = (props) => {
     return (
-       <i className={`wu wu-black wu-64 wu-${props.icon}`}></i>
+       <i className={`wu wu-black wu-64 wu-${props.icon} ${"wu-" + props.night}`}></i>
     )
 }
 
