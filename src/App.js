@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from "./components/Container";
+import WeatherIcon from "./components/WeatherIcon";
 import './App.scss';
 
 function App() {
@@ -7,6 +8,11 @@ function App() {
     <div className="App">
       <Container>
         <p>Gotta start somewhere!!!</p>
+      </Container>
+      <Container>
+        <WeatherIcon
+          icon={"chanceflurries"}
+        />
       </Container>
     </div>
   );
