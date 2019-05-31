@@ -1,1 +1,22 @@
+.app {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+        "header header"
+        "weatherIcon details";
+    grid-row-gap: 50px;
+}
 
+.header {
+    grid-area: header;
+}
+
+.weatherIcon {
+    grid-area: weatherIcon;
+    perspective: 50px;
+    perspective-origin: center;
+}
+
+.details {
+    grid-area: details;
+}

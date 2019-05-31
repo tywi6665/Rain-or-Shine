@@ -40,7 +40,7 @@ function App() {
   console.log(currentWeather, dayOrNight, Date.now())
 
   return (
-    <div className="App">
+    <div className="app">
       <Container
         gridArea={"header"}
       >
@@ -49,7 +49,7 @@ function App() {
       {currentWeather ? (
         <>
           <Container
-            gridArea={"icon"}
+            gridArea={"weatherIcon"}
           >
             <WeatherIcon
               icon={currentWeather.icon}
