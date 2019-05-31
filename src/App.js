@@ -21,6 +21,7 @@ function App() {
         let hourly = res.data.hourly.data;
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
+        currently.windBearing = degToCardinal(currently.windBearing)
         setCurrentWeather(currently);
         if (Date.now() < daily.sunsetTime) {
           setDayOrNight("night");
@@ -29,6 +30,12 @@ function App() {
         }
       })
   }, []);
+
+  function degToCardinal(windBearing) {
+    const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+    let value = Math.floor((windBearing / 22.5) + 0.5);
+    return cardinalDirections[(value % 16)];
+  };
 
   console.log(currentWeather, dayOrNight, Date.now())
 
@@ -51,12 +58,24 @@ function App() {
               weatherInfo={currentWeather.temperature}
             />
             <WeatherDetail
+              weatherCondition={"Humidity"}
+              weatherInfo={currentWeather.humidity}
+            />
+            <WeatherDetail
+              weatherCondition={"Chance of Precipitation"}
+              weatherInfo={`${currentWeather.precipProbability}%`}
+            />
+            <WeatherDetail
               weatherCondition={"Wind Speed"}
-              weatherInfo={currentWeather.windSpeed}
+              weatherInfo={`${currentWeather.windSpeed}mph`}
             />
             <WeatherDetail
               weatherCondition={"Wind Direction"}
-              weatherInfo={"NNW"}
+              weatherInfo={currentWeather.windBearing}
+            />
+            <WeatherDetail
+              weatherCondition={"UV Index"}
+              weatherInfo={currentWeather.uvIndex}
             />
           </Container>
         </>
