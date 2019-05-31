@@ -10,19 +10,27 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null)
   const [minuteWeather, setMinuteWeather] = useState(null)
   const [hourWeather, setHourWeather] = useState(null)
-  const [timeOfDay, setTimeOfDay] = useState(Date.now())
-
+  const [dailyWeather, setDailyWeather] = useState(null)
+  const [dayOrNight, setDayOrNight] = useState("")
+  //use sun rise/set time from dailyWeather
 
   useEffect(() => {
     API.getWeather()
       .then(res => {
-        let conditions = res.data.currently
-        conditions.icon = conditions.icon.replace(/-/g, "")
-        setCurrentWeather(conditions)
+        let currently = res.data.currently;
+        let hourly = res.data.hourly.data;
+        let daily = res.data.daily.data;
+        currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
+        setCurrentWeather(currently);
+        if (Date.now() < daily.sunsetTime) {
+          setDayOrNight("night");
+        } else {
+          setDayOrNight("day");
+        }
       })
   }, []);
 
-  console.log(currentWeather, timeOfDay)
+  console.log(currentWeather, dayOrNight, Date.now())
 
   return (
     <div className="App">
@@ -34,6 +42,7 @@ function App() {
           <Container>
             <WeatherIcon
               icon={currentWeather.icon}
+              dayOrNight={dayOrNight}
             />
           </Container>
           <Container>
