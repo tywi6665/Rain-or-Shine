@@ -41,18 +41,24 @@ function App() {
 
   return (
     <div className="App">
-      <Container>
+      <Container
+        gridArea={"header"}
+      >
         <p>Welcome to Rain or Shine!</p>
       </Container>
       {currentWeather ? (
         <>
-          <Container>
+          <Container
+            gridArea={"icon"}
+          >
             <WeatherIcon
               icon={currentWeather.icon}
               dayOrNight={dayOrNight}
             />
           </Container>
-          <Container>
+          <Container
+            gridArea={"details"}
+          >
             <WeatherDetail
               weatherCondition={"Temperature"}
               weatherInfo={currentWeather.temperature}
