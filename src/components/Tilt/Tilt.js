@@ -8,6 +8,13 @@ const Tilt = ({ children }) => {
 
     const enterTransitionTime = 100;
     const leaveTransitionTime = 250;
+    const maxRotation;
+    const maxScale;
+    const maxShadowDisplacement;
+    const shadowRadius;
+    const shadowColor;
+    const perspective;
+    const easing;
 
     const onMouseEnter = useCallback(
         (e) => {
@@ -39,6 +46,8 @@ const Tilt = ({ children }) => {
         []
     );
 
+    const hover = (position.x || position.y)
+
     return (
         <div
             className="tilt"
@@ -46,7 +55,42 @@ const Tilt = ({ children }) => {
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave}
         >
-            <div className="innerTilt">
+            <div
+                className="innerTilt"
+                style={{
+                    filter: (
+                        hover ? (
+                            `drop-shadow(
+                                ${position.x * maxShadowDisplacement}px
+                                ${position.y * maxShadowDisplacement}px
+                                ${shadowRadius}
+                                ${shadowColor}
+                            )`
+                        ) : (
+                                ""
+                            )
+                    ),
+                    transform: `
+                        perspective(${perspective})
+                        rotateX(${maxRotation * position.y}deg)
+                        rotateY(${-maxRotation * position.x}deg)
+                        ${hover ? (
+                            `scale3d(${maxScale}, ${maxScale}, ${maxScale})`
+                        ) : (
+                                ""
+                            )}
+                        `,
+                    transition: (
+                        transitionTime ? (
+                            `transfrom ${transitionTime}ms ${easing},
+                            filter ${transitionTime}ms ${easing}`
+                        ) : (
+                            ""
+                        )
+                    )
+
+                }}
+            >
                 {children}
             </div>
         </div>
