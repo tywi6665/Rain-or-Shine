@@ -6,6 +6,9 @@ const Tilt = ({ children }) => {
     const [position, setPosition] = useState({ x: 0, y: 0});
     const [transitionTime, setTranistionTime] = useState(null)
 
+    const enterTransitionTime = 100;
+    const leaveTransitionTime = 250;
+    
     const onMouseEnter = useCallback(
         (e) => {
             setPosition(getPosition(e));
@@ -27,7 +30,11 @@ const Tilt = ({ children }) => {
 
     const onMouseLeave = useCallback(
         (e) => {
-
+            setTranistionTime(leaveTransitionTime);
+            setTimeout(() => {
+                setTranistionTime(enterTransitionTime);
+            });
+            setPosition({ x: 0, y: 0});
         },
         []
     );
