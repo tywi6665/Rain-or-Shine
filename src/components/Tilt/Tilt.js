@@ -8,13 +8,13 @@ const Tilt = ({ children }) => {
 
     const enterTransitionTime = 100;
     const leaveTransitionTime = 250;
-    const maxRotation;
-    const maxScale;
-    const maxShadowDisplacement;
-    const shadowRadius;
-    const shadowColor;
-    const perspective;
-    const easing;
+    const maxRotation = 0.1;
+    const maxScale = 1;
+    // const maxShadowDisplacement = 0.1;
+    // const shadowRadius = "20px";
+    // const shadowColor = "rgba(0, 0, 0, 0.5)";
+    const perspective = "1000px";
+    const easing = "ease-in-out";
 
     const onMouseEnter = useCallback(
         (e) => {
@@ -58,18 +58,18 @@ const Tilt = ({ children }) => {
             <div
                 className="innerTilt"
                 style={{
-                    filter: (
-                        hover ? (
-                            `drop-shadow(
-                                ${position.x * maxShadowDisplacement}px
-                                ${position.y * maxShadowDisplacement}px
-                                ${shadowRadius}
-                                ${shadowColor}
-                            )`
-                        ) : (
-                                ""
-                            )
-                    ),
+                    // filter: (
+                    //     hover ? (
+                    //         `drop-shadow(
+                    //             ${position.x * maxShadowDisplacement}px
+                    //             ${position.y * maxShadowDisplacement}px
+                    //             ${shadowRadius}
+                    //             ${shadowColor}
+                    //         )`
+                    //     ) : (
+                    //             ""
+                    //         )
+                    // ),
                     transform: `
                         perspective(${perspective})
                         rotateX(${maxRotation * position.y}deg)

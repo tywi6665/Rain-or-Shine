@@ -31,8 +31,6 @@ function App() {
       })
   }, []);
 
-  // const position = useMousePosition();
-
   function degToCardinal(windBearing) {
     const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
     let value = Math.floor((windBearing / 22.5) + 0.5);
@@ -62,7 +60,7 @@ function App() {
             gridArea={"details"}
           >
             <WeatherDetail
-              weatherCondition={"Temperature"}
+              weatherCondition={"Temperature(F)"}
               weatherInfo={currentWeather.temperature}
             />
             <WeatherDetail
@@ -74,8 +72,8 @@ function App() {
               weatherInfo={`${currentWeather.precipProbability}%`}
             />
             <WeatherDetail
-              weatherCondition={"Wind Speed"}
-              weatherInfo={`${currentWeather.windSpeed}mph`}
+              weatherCondition={"Wind Speed(mph)"}
+              weatherInfo={`${currentWeather.windSpeed}`}
             />
             <WeatherDetail
               weatherCondition={"Wind Direction"}
