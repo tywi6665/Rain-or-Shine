@@ -5,7 +5,6 @@ import WeatherDetail from "./components/WeatherDetail";
 import API from "./utils/API";
 import './App.scss';
 
-
 function App() {
 
   const [currentWeather, setCurrentWeather] = useState(null)
@@ -32,6 +31,8 @@ function App() {
       })
   }, []);
 
+  // const position = useMousePosition();
+
   function degToCardinal(windBearing) {
     const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
     let value = Math.floor((windBearing / 22.5) + 0.5);
@@ -39,22 +40,6 @@ function App() {
   };
 
   console.log(currentWeather, dayOrNight, Date.now())
-
-  function handleMouseEnter(e) {
-    console.log("Hey")
-    console.log("onmouseenter", e.clientX, e.clientY)
-  };
-
-  function handleMouseMove(e) {
-    console.log(
-      'onMouseMove',
-      e.nativeEvent.clientX, e.nativeEvent.clientY
-    )
-  };
-
-  function handleMouseLeave(e) {
-    console.log('onMouseLeave', e.clientX, e.clientY)
-  };
 
   return (
     <div className="app">
@@ -67,9 +52,6 @@ function App() {
         <>
           <Container
             gridArea={"weatherIcon"}
-            onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
           >
             <WeatherIcon
               icon={currentWeather.icon}
