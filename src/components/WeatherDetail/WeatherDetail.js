@@ -4,8 +4,8 @@ import "./WeatherDetail.scss";
 const WeatherDetail = (props) => {
     return (
         <div className="weatherDetail">
-            <div>{props.weatherInfo}</div>
-            <div>{props.weatherCondition}</div>
+            <p>{props.weatherInfo}</p>
+            <p>{props.weatherCondition}</p>
         </div>
     )
 };

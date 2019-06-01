@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
 import WeatherDetail from "./components/WeatherDetail";
+import Tilt from "./components/Tilt";
 import API from "./utils/API";
 import './App.scss';
 
@@ -22,6 +23,7 @@ function App() {
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
         currently.windBearing = degToCardinal(currently.windBearing)
+        setDailyWeather(daily[0]);
         setCurrentWeather(currently);
         if (Date.now() < daily.sunsetTime) {
           setDayOrNight("night");
@@ -37,7 +39,8 @@ function App() {
     return cardinalDirections[(value % 16)];
   };
 
-  console.log(currentWeather, dayOrNight, Date.now())
+  console.log(currentWeather)
+  console.log(dailyWeather);
 
   return (
     <div className="app">
@@ -45,17 +48,26 @@ function App() {
         gridArea={"header"}
       >
         <p>Welcome to Rain or Shine!</p>
+        <div className="scrollingText">
+          {dailyWeather ? (
+            <p>{dailyWeather.summary}</p>
+          ) : (
+              null
+            )}
+        </div>
       </Container>
       {currentWeather ? (
         <>
-          <Container
-            gridArea={"weatherIcon"}
-          >
-            <WeatherIcon
-              icon={currentWeather.icon}
-              dayOrNight={dayOrNight}
-            />
-          </Container>
+          <Tilt>
+            <Container
+              gridArea={"weatherIcon"}
+            >
+              <WeatherIcon
+                icon={currentWeather.icon}
+                dayOrNight={dayOrNight}
+              />
+            </Container>
+          </Tilt>
           <Container
             gridArea={"details"}
           >

@@ -8,7 +8,7 @@ const Tilt = ({ children }) => {
 
     const enterTransitionTime = 100;
     const leaveTransitionTime = 250;
-    const maxRotation = 0.1;
+    const maxRotation = 0.2;
     const maxScale = 1;
     // const maxShadowDisplacement = 0.1;
     // const shadowRadius = "20px";
