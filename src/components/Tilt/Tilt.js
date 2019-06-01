@@ -19,7 +19,7 @@ const Tilt = ({ children }) => {
         []
     );
 
-    const onMouseMove = useCallBack(
+    const onMouseMove = useCallback(
         (e) => {
             if (!transitionTime) {
                 setPosition(getPosition(e));
