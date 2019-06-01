@@ -18,7 +18,9 @@ const Tilt = ({ children }) => {
 
     const onMouseMove = useCallBack(
         (e) => {
-
+            if(!transitionTime) {
+                setPosition(getPosition(e));
+            }
         },
         [transitionTime]
     );
