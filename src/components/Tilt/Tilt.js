@@ -8,7 +8,10 @@ const Tilt = ({ children }) => {
 
     const onMouseEnter = useCallback(
         (e) => {
-
+            setPosition(getPosition(e));
+            setTimeout(() => {
+                setTranistionTime(0);
+            }, transitionTime);
         }, 
         []
     );
