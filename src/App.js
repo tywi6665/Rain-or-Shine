@@ -23,7 +23,7 @@ function App() {
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
         currently.windBearing = degToCardinal(currently.windBearing)
-        setDailyWeather(daily[0]);
+        setDailyWeather(daily);
         setCurrentWeather(currently);
         if (Date.now() < daily.sunsetTime) {
           setDayOrNight("night");
@@ -50,7 +50,7 @@ function App() {
         <p>Welcome to Rain or Shine!</p>
         <div className="scrollingText">
           {dailyWeather ? (
-            <p>{dailyWeather.summary}</p>
+            <p>{dailyWeather[0].summary}</p>
           ) : (
               null
             )}

@@ -8,7 +8,7 @@ export const useUtils = (apiMethod, dependencies) => {
         console.log("API method:" , apiMethod);
         API.apiMethod()
             .then(res => {
-                console.log(res);
+                setFetchedData(res.data)
             })
     })
 };
