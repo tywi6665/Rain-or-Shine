@@ -3,6 +3,7 @@ import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
 import WeatherDetail from "./components/WeatherDetail";
 import Tilt from "./components/Tilt";
+import ForecastPlot from "./components/ForecastPlot";
 import API from "./utils/API";
 import './App.scss';
 
@@ -100,6 +101,11 @@ function App() {
       ) : (
           <p>Retrieving Weather</p>
         )}
+      <Container>
+        <ForecastPlot
+          forecast={dailyWeather}
+        />
+      </Container>
     </div>
   );
 }
