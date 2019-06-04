@@ -33,6 +33,13 @@ const ForecastPlot = (props) => {
 
     const yAxis = d3.axisLeft(y);
 
+    const lineGenerator = d3.svg.line()
+        .interpolate("basis")
+        .x(function(d) { return x(d.day); })
+        .y(function(d) { return y(d.temp); });
+
+    const forecastData = {};
+
     return (
         <div className="plot"></div>
     )
