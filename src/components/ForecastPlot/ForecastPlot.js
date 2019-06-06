@@ -73,6 +73,21 @@ const ForecastPlot = (props) => {
         svg.append("g")
             .attr("class", "y-axis")
             .call(yAxis);
+
+        svg.append("linearGradient")
+            .attr("id", "temp-gradient")
+            .attr("gradientUnits", "userSpaceOnUse")
+            .attr("x1", 0).attr("y1", y(50))
+            .attr("x2", 0).attr("y2", y(60))
+            .selectAll("stop")
+            .data([
+                { offset: "0%", color: "black" },
+                { offset: "50%", color: "gray" },
+                { offset: "100%", color: "red" }
+            ])
+            .enter().append("stop")
+            .attr("offset", function(d) { return d.offset; })
+            .attr("stop-color", function(d) { return d.color; });
     }, [forecastData])
 
     return (
