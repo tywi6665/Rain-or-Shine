@@ -23,12 +23,13 @@ const ForecastPlot = (props) => {
                 })
             });
             setForecastData(forecastDataArr);
-            // d3.select(".plot").remove("svg");
         }
     }, [props.forecast, forecastData])
 
     console.log(forecastData);
-    useEffect(() => { 
+    useEffect(() => {
+
+        d3.select(".d3plot").remove();
 
         const margin = {
             top: 20,
@@ -43,6 +44,7 @@ const ForecastPlot = (props) => {
 
         const svg = d3.select(".plot")
             .append("svg")
+            .attr("class", "d3plot")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
@@ -71,7 +73,7 @@ const ForecastPlot = (props) => {
         svg.append("g")
             .attr("class", "y-axis")
             .call(yAxis);
-    }, [props.forecast])
+    }, [forecastData])
 
     return (
         <div className="plot"></div>
