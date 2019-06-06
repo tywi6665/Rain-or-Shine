@@ -1,6 +1,9 @@
 .tilt {
     width: fit-content;
     height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .innerTilt {
         display: flex;
