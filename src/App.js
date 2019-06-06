@@ -40,8 +40,8 @@ function App() {
     return cardinalDirections[(value % 16)];
   };
 
-  console.log(currentWeather)
-  console.log(dailyWeather);
+  // console.log(currentWeather)
+  // console.log(dailyWeather);
 
   return (
     <div className="app">

@@ -23,14 +23,16 @@ const ForecastPlot = (props) => {
                 })
             });
             setForecastData(forecastDataArr);
+            plot(forecastDataArr);
         }
-    }, [props.forecast, forecastData])
+    }, [props.forecast])
 
     console.log(forecastData);
-    useEffect(() => {
+    function plot(data) {
 
         d3.select(".d3plot").remove();
 
+        const n = 21;
         const margin = {
             top: 20,
             right: 20,
@@ -50,10 +52,12 @@ const ForecastPlot = (props) => {
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-        const x = d3.scaleTime()
+        const x = d3.scaleLinear()
+            .domain([0, n - 1])
             .range([0, width]);
 
         const y = d3.scaleLinear()
+            .domain([0, 1])
             .range([height, 0])
 
         const xAxis = d3.axisBottom(x);
@@ -62,23 +66,23 @@ const ForecastPlot = (props) => {
 
         const lineGenerator = d3.line()
             .curve(d3.curveMonotoneX)
-            .x(function (d) { return x(d.date); })
-            .y(function (d) { return y(d.highTemp); });
+            .x(function (d, i) { return x(i); })
+            .y(function (d) { return y(d.y); });
 
         svg.append("g")
-            .attr("class", "x-axis")
+            .attr("class", "x axis")
             .attr("transform", `translate(0, ${height})`)
             .call(xAxis);
 
         svg.append("g")
-            .attr("class", "y-axis")
+            .attr("class", "y axis")
             .call(yAxis);
 
         svg.append("linearGradient")
             .attr("id", "temp-gradient")
             .attr("gradientUnits", "userSpaceOnUse")
-            .attr("x1", 0).attr("y1", y(50))
-            .attr("x2", 0).attr("y2", y(60))
+            .attr("x1", 0).attr("y1", y(0))
+            .attr("x2", 0).attr("y2", y(1))
             .selectAll("stop")
             .data([
                 { offset: "0%", color: "black" },
@@ -86,9 +90,18 @@ const ForecastPlot = (props) => {
                 { offset: "100%", color: "red" }
             ])
             .enter().append("stop")
-            .attr("offset", function(d) { return d.offset; })
-            .attr("stop-color", function(d) { return d.color; });
-    }, [forecastData])
+            .attr("offset", function (d) { return d.offset; })
+            .attr("stop-color", function (d) { return d.color; });
+
+
+        var dataset = d3.range(n).map(function (d) { return { "y": d3.randomUniform(1)() } })
+
+        svg.append("path")
+            .datum(dataset)
+            .attr("class", "line")
+            .attr("d", lineGenerator)
+
+    }
 
     return (
         <div className="plot"></div>

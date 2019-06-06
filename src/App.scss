@@ -2,7 +2,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-rows: 0.5fr 2fr 2fr;
     grid-template-areas: 
         "header header"
         "weatherIcon details"
