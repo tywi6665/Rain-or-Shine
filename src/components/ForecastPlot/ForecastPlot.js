@@ -23,43 +23,55 @@ const ForecastPlot = (props) => {
                 })
             });
             setForecastData(forecastDataArr);
+            // d3.select(".plot").remove("svg");
         }
-    }, [props.forecast])
+    }, [props.forecast, forecastData])
 
     console.log(forecastData);
+    useEffect(() => { 
 
-    const margin = {
-        top: 20,
-        right: 20,
-        bottom: 30,
-        left: 50
-    },
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        const margin = {
+            top: 20,
+            right: 20,
+            bottom: 30,
+            left: 50
+        },
+            width = 960 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
 
-    // const parseDate = d3.time.format("%Y%m%d");
+        // const parseDate = d3.time.format("%Y%m%d");
 
-    const svg = d3.select(".plot")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+        const svg = d3.select(".plot")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    const x = d3.scaleTime()
-        .range([0, width]);
+        const x = d3.scaleTime()
+            .range([0, width]);
 
-    const y = d3.scaleLinear()
-        .range([height, 0])
+        const y = d3.scaleLinear()
+            .range([height, 0])
 
-    const xAxis = d3.axisBottom(x);
+        const xAxis = d3.axisBottom(x);
 
-    const yAxis = d3.axisLeft(y);
+        const yAxis = d3.axisLeft(y);
 
-    const lineGenerator = d3.line()
-        .curve(d3.curveMonotoneX)
-        .x(function (d) { return x(d.day); })
-        .y(function (d) { return y(d.temp); });
+        const lineGenerator = d3.line()
+            .curve(d3.curveMonotoneX)
+            .x(function (d) { return x(d.date); })
+            .y(function (d) { return y(d.highTemp); });
+
+        svg.append("g")
+            .attr("class", "x-axis")
+            .attr("transform", `translate(0, ${height})`)
+            .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y-axis")
+            .call(yAxis);
+    }, [props.forecast])
 
     return (
         <div className="plot"></div>

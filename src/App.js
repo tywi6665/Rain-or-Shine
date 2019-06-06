@@ -101,7 +101,9 @@ function App() {
       ) : (
           <p>Retrieving Weather</p>
         )}
-      <Container>
+      <Container
+        gridArea={"weatherPlot"}
+      >
         <ForecastPlot
           forecast={dailyWeather}
         />

@@ -1,11 +1,12 @@
 .app {
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 1fr 2fr 2fr;
     grid-template-areas: 
         "header header"
-        "weatherIcon details";
+        "weatherIcon details"
+        "weatherPlot weatherPlot";
     // grid-row-gap: 50px;
     background: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff);
 }
@@ -47,5 +48,9 @@
 
 .details {
     grid-area: details;
+}
+
+.weatherPlot {
+    grid-area: weatherPlot;
 }
 
