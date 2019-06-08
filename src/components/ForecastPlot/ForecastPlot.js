@@ -16,12 +16,15 @@ const ForecastPlot = (props) => {
             rawForecastData.forEach((data) => {
                 forecastDataArr.push({
                     date: data.time,
-                    highTemp: data.temperatureHigh,
-                    highTempTime: data.temperatureHighTime,
-                    lowTemp: data.temperatureLow,
-                    lowTempTime: data.temperatureLowTime
+                    temp: data.temperatureHigh,
+                    tempTime: data.temperatureHighTime,
+                });
+                forecastDataArr.push({
+                    date: data.time,
+                    temp: data.temperatureLow,
+                    tempTime: data.temperatureLowTime
                 })
-            });
+            })
             setForecastData(forecastDataArr);
             plot(forecastDataArr);
         }
@@ -53,11 +56,11 @@ const ForecastPlot = (props) => {
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
         const x = d3.scaleTime()
-            .domain([data[0].date, data[data.length - 1].date])
+            .domain([data[0].tempTime, data[data.length - 1].tempTime])
             .range([0, width]);
 
         const y = d3.scaleLinear()
-            .domain(d3.extent(data, function(d) { return d.highTemp }))
+            .domain(d3.extent(data, function(d) { return d.temp }))
             .range([height, 0]);
 
         const xAxis = d3.axisBottom(x);
@@ -66,8 +69,8 @@ const ForecastPlot = (props) => {
 
         const lineGenerator = d3.line()
             .curve(d3.curveMonotoneX)
-            .x(function (d, i) { return x(i); })
-            .y(function (d) { return y(d.y); });
+            .x(function (d) { return x(d.tempTime); })
+            .y(function (d) { return y(d.temp); });
 
         svg.append("g")
             .attr("class", "x axis")
@@ -82,7 +85,7 @@ const ForecastPlot = (props) => {
             .attr("id", "temp-gradient")
             .attr("gradientUnits", "userSpaceOnUse")
             .attr("x1", 0).attr("y1", y(0))
-            .attr("x2", 0).attr("y2", y(1))
+            .attr("x2", 0).attr("y2", y(100))
             .selectAll("stop")
             .data([
                 { offset: "0%", color: "black" },
