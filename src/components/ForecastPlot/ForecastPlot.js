@@ -51,12 +51,10 @@ const ForecastPlot = (props) => {
         // });
 
         const maxTemp = data.reduce(function(a, b) {
-            console.log(a.temp, b.temp)
             return (a.temp > b.temp) ? a : b;
         });
 
         const minTemp = data.reduce(function(a, b) {
-            console.log(a.temp, b.temp)
             return (b.temp > a.temp) ? a : b;
         });
 
@@ -98,13 +96,13 @@ const ForecastPlot = (props) => {
         svg.append("linearGradient")
             .attr("id", "temp-gradient")
             .attr("gradientUnits", "userSpaceOnUse")
-            .attr("x1", 0).attr("y1", y(0))
-            .attr("x2", 0).attr("y2", y(100))
+            .attr("x1", 0).attr("y1", y(minTemp.temp))
+            .attr("x2", 0).attr("y2", y(maxTemp.temp))
             .selectAll("stop")
             .data([
-                { offset: "0%", color: "black" },
-                { offset: "50%", color: "gray" },
-                { offset: "100%", color: "red" }
+                { offset: "0%", color: "#1A12FE" },
+                // { offset: "50%", color: "gray" },
+                { offset: "100%", color: "#FE1212" }
             ])
             .enter().append("stop")
             .attr("offset", function (d) { return d.offset; })
