@@ -35,7 +35,6 @@ const ForecastPlot = (props) => {
 
         d3.select(".d3plot").remove();
 
-        const n = 21;
         const margin = {
             top: 20,
             right: 20,
@@ -45,7 +44,21 @@ const ForecastPlot = (props) => {
             width = 960 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
-        // const parseDate = d3.time.format("%Y%m%d");
+        // const parseDate = d3.timeParse("%A");
+
+        // data.forEach((date) => {
+        //     date.tempTime = parseDate(date.tempTime)
+        // });
+
+        const maxTemp = data.reduce(function(a, b) {
+            console.log(a.temp, b.temp)
+            return (a.temp > b.temp) ? a : b;
+        });
+
+        const minTemp = data.reduce(function(a, b) {
+            console.log(a.temp, b.temp)
+            return (b.temp > a.temp) ? a : b;
+        });
 
         const svg = d3.select(".plot")
             .append("svg")
@@ -60,7 +73,7 @@ const ForecastPlot = (props) => {
             .range([0, width]);
 
         const y = d3.scaleLinear()
-            .domain(d3.extent(data, function(d) { return d.temp }))
+            .domain(d3.extent(data, function (d) { return d.temp }))
             .range([height, 0]);
 
         const xAxis = d3.axisBottom(x);
@@ -75,7 +88,8 @@ const ForecastPlot = (props) => {
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", `translate(0, ${height})`)
-            .call(xAxis);
+            .call(xAxis
+                    .tickFormat(d3.timeFormat("%A")));
 
         svg.append("g")
             .attr("class", "y axis")
@@ -95,9 +109,6 @@ const ForecastPlot = (props) => {
             .enter().append("stop")
             .attr("offset", function (d) { return d.offset; })
             .attr("stop-color", function (d) { return d.color; });
-
-
-        // var dataset = d3.range(n).map(function (d) { return { "y": d3.randomUniform(1)() } })
 
         svg.append("path")
             .datum(data)
