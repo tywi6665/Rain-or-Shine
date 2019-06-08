@@ -5,10 +5,12 @@ import "./ForecastPlot.scss";
 const ForecastPlot = (props) => {
 
     const [forecastData, setForecastData] = useState(null)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-
         if (props.forecast) {
+            const handleResize = () => setWindowWidth(window.innerWidth);
+            window.addEventListener("resize", handleResize);
             const rawForecastData = props.forecast;
 
             let forecastDataArr = [];
@@ -27,8 +29,18 @@ const ForecastPlot = (props) => {
             })
             setForecastData(forecastDataArr);
             plot(forecastDataArr);
+
+            return () => window.removeEventListener("resize", handleResize);
+
         }
-    }, [props.forecast])
+    }, [props.forecast, windowWidth])
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        // plot()
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     console.log(forecastData);
     function plot(data) {
@@ -41,7 +53,7 @@ const ForecastPlot = (props) => {
             bottom: 30,
             left: 50
         },
-            width = window.innerWidth - margin.left - margin.right,
+            width = windowWidth - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
         const parseDate = d3.timeParse("%s")
@@ -50,11 +62,11 @@ const ForecastPlot = (props) => {
             date.tempTime = parseDate(date.tempTime)
         });
 
-        const maxTemp = data.reduce(function(a, b) {
+        const maxTemp = data.reduce(function (a, b) {
             return (a.temp > b.temp) ? a : b;
         });
 
-        const minTemp = data.reduce(function(a, b) {
+        const minTemp = data.reduce(function (a, b) {
             return (b.temp > a.temp) ? a : b;
         });
 
