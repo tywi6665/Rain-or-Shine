@@ -37,18 +37,18 @@ const ForecastPlot = (props) => {
 
         const margin = {
             top: 20,
-            right: 20,
+            right: 50,
             bottom: 30,
             left: 50
         },
-            width = 960 - margin.left - margin.right,
+            width = window.innerWidth - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
 
-        // const parseDate = d3.timeParse("%A");
+        const parseDate = d3.timeParse("%s")
 
-        // data.forEach((date) => {
-        //     date.tempTime = parseDate(date.tempTime)
-        // });
+        data.forEach((date) => {
+            date.tempTime = parseDate(date.tempTime)
+        });
 
         const maxTemp = data.reduce(function(a, b) {
             return (a.temp > b.temp) ? a : b;
@@ -86,8 +86,7 @@ const ForecastPlot = (props) => {
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", `translate(0, ${height})`)
-            .call(xAxis
-                    .tickFormat(d3.timeFormat("%A")));
+            .call(xAxis.tickFormat(d3.timeFormat("%A")));
 
         svg.append("g")
             .attr("class", "y axis")
