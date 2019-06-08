@@ -9,8 +9,7 @@ const ForecastPlot = (props) => {
 
     useEffect(() => {
         if (props.forecast) {
-            const handleResize = () => setWindowWidth(window.innerWidth);
-            window.addEventListener("resize", handleResize);
+
             const rawForecastData = props.forecast;
 
             let forecastDataArr = [];
@@ -26,35 +25,30 @@ const ForecastPlot = (props) => {
                     temp: data.temperatureLow,
                     tempTime: data.temperatureLowTime
                 })
-            })
+            });
             setForecastData(forecastDataArr);
             plot(forecastDataArr);
-
-            return () => window.removeEventListener("resize", handleResize);
-
         }
     }, [props.forecast, windowWidth])
 
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener("resize", handleResize);
-        // plot()
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    console.log(forecastData);
     function plot(data) {
 
         d3.select(".d3plot").remove();
 
         const margin = {
             top: 20,
-            right: 50,
+            right: 60,
             bottom: 30,
-            left: 50
+            left: 60
         },
             width = windowWidth - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+            height = 550 - margin.top - margin.bottom;
 
         const parseDate = d3.timeParse("%s")
 
@@ -84,7 +78,7 @@ const ForecastPlot = (props) => {
 
         const y = d3.scaleLinear()
             .domain(d3.extent(data, function (d) { return d.temp }))
-            .range([height, 0]);
+            .range([height - 25, 0]);
 
         const xAxis = d3.axisBottom(x);
 
@@ -97,12 +91,25 @@ const ForecastPlot = (props) => {
 
         svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", `translate(0, ${height})`)
-            .call(xAxis.tickFormat(d3.timeFormat("%A")));
+            .attr("transform", `translate(0, ${height - 25})`)
+            .call(xAxis.tickFormat(d3.timeFormat("%A")))
+
+        svg.append("text")
+            .attr("transform", `translate(${width / 2}, ${((height - 25) + margin.top + 20)})`)
+                .style("text-anchor", "middle")
+                .text("7 Day Forecast");
 
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - (margin.left - 10))
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Temperature(ºF)");
 
         svg.append("linearGradient")
             .attr("id", "temp-gradient")
@@ -124,11 +131,11 @@ const ForecastPlot = (props) => {
             .attr("class", "line")
             .attr("d", lineGenerator)
 
-    }
+    };
 
     return (
         <div className="plot"></div>
-    )
+    );
 };
 
 export default ForecastPlot;
