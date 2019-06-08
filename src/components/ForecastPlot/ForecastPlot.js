@@ -52,13 +52,13 @@ const ForecastPlot = (props) => {
             .append("g")
             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-        const x = d3.scaleLinear()
-            .domain([0, n - 1])
+        const x = d3.scaleTime()
+            .domain([data[0].date, data[data.length - 1].date])
             .range([0, width]);
 
         const y = d3.scaleLinear()
-            .domain([0, 1])
-            .range([height, 0])
+            .domain(d3.extent(data, function(d) { return d.highTemp }))
+            .range([height, 0]);
 
         const xAxis = d3.axisBottom(x);
 
@@ -94,10 +94,10 @@ const ForecastPlot = (props) => {
             .attr("stop-color", function (d) { return d.color; });
 
 
-        var dataset = d3.range(n).map(function (d) { return { "y": d3.randomUniform(1)() } })
+        // var dataset = d3.range(n).map(function (d) { return { "y": d3.randomUniform(1)() } })
 
         svg.append("path")
-            .datum(dataset)
+            .datum(data)
             .attr("class", "line")
             .attr("d", lineGenerator)
 
