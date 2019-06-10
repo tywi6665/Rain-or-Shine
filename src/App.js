@@ -10,17 +10,16 @@ import './App.scss';
 function App() {
 
   const [currentWeather, setCurrentWeather] = useState(null)
-  const [minuteWeather, setMinuteWeather] = useState(null)
-  const [hourWeather, setHourWeather] = useState(null)
+  // const [minuteWeather, setMinuteWeather] = useState(null)
+  // const [hourWeather, setHourWeather] = useState(null)
   const [dailyWeather, setDailyWeather] = useState(null)
   const [dayOrNight, setDayOrNight] = useState("")
-  //use sun rise/set time from dailyWeather
 
   useEffect(() => {
     API.getWeather()
       .then(res => {
         let currently = res.data.currently;
-        let hourly = res.data.hourly.data;
+        // let hourly = res.data.hourly.data;
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
         currently.windBearing = degToCardinal(currently.windBearing)
