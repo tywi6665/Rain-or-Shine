@@ -89,7 +89,7 @@ const ForecastPlot = (props) => {
         const yAxis = d3.axisLeft(y);
 
         const lineGenerator = d3.line()
-            .curve(d3.curveMonotoneX)
+            .curve(d3.curveCardinal)
             .x(function (d) { return x(d.tempTime); })
             .y(function (d) { return y(d.temp); });
 
@@ -100,8 +100,8 @@ const ForecastPlot = (props) => {
 
         svg.append("text")
             .attr("transform", `translate(${width / 2}, ${((height - 25) + margin.top + 20)})`)
-                .style("text-anchor", "middle")
-                .text("7 Day Forecast");
+            .style("text-anchor", "middle")
+            .text("7 Day Forecast");
 
         svg.append("g")
             .attr("class", "y axis")
@@ -140,10 +140,24 @@ const ForecastPlot = (props) => {
             .enter()
             .append("circle")
             .attr("class", "dot")
-            .attr("cx", function(d, i) { return x(d.tempTime) })
-            .attr("cy", function(d) { return y(d.temp) })
-            .attr("r", 2.5);
+            .attr("cx", function (d, i) { return x(d.tempTime); })
+            .attr("cy", function (d) { return y(d.temp); })
+            .attr("r", 2.5)
+            .on("mouseover", handleMouseOver)
+
+        function handleMouseOver(d) {
+            d3.select(this)
+                .transition()
+                .attr("r", 5);
+
+            svg.append("text")
+                .attr("x", function () { return x(d.tempTime); })
+                .attr("y", function () { return y(d.temp); })
+                .text(function () { return [d.tempTime, d.temp] })
+        };
     };
+
+
 
     return (
         <div className="plot"></div>
