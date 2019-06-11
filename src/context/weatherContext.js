@@ -1,11 +1,11 @@
 import React, { useState, useEffect, createContext } from 'react';
 import API from "../utils/API";
 
-export const weatherContext = createContext();
+export const WeatherContext = createContext();
 
-export const weatherProvider = props => {
+export const WeatherProvider = props => {
 
-    const [weather, setWeather] = useState(null);
+    const [weather, setWeather] = useState({});
 
     useEffect(() => {
         API.getWeather()
@@ -13,6 +13,8 @@ export const weatherProvider = props => {
                 setWeather(res.data);
             })
     }, []);
+
+
 
     return (
         <WeatherContext.Provider value={[weather, setWeather]}>

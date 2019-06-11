@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as d3 from "d3";
 import "./ForecastPlot.scss";
+// import { WeatherContext } from "../../context/weatherContext";
 
 const ForecastPlot = (props) => {
 
+    // const [weather, setWeather] = useContext(WeatherContext)
+    // console.log(weather);
     const [forecastData, setForecastData] = useState(null)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
+
         if (props.forecast) {
 
             const rawForecastData = props.forecast;
@@ -129,8 +133,16 @@ const ForecastPlot = (props) => {
         svg.append("path")
             .datum(data)
             .attr("class", "line")
-            .attr("d", lineGenerator)
+            .attr("d", lineGenerator);
 
+        svg.selectAll(".dot")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("class", "dot")
+            .attr("cx", function(d, i) { return x(d.tempTime) })
+            .attr("cy", function(d) { return y(d.temp) })
+            .attr("r", 2.5);
     };
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
 import WeatherDetail from "./components/WeatherDetail";
@@ -6,8 +6,11 @@ import Tilt from "./components/Tilt";
 import ForecastPlot from "./components/ForecastPlot";
 import API from "./utils/API";
 import './App.scss';
+// import { WeatherProvider } from './context/weatherContext';
 
 function App() {
+
+  // const [weather, setWeather] = useContext(WeatherContext)
 
   const [currentWeather, setCurrentWeather] = useState(null)
   // const [minuteWeather, setMinuteWeather] = useState(null)
@@ -43,71 +46,73 @@ function App() {
   // console.log(dailyWeather);
 
   return (
-    <div className="app">
-      <Container
-        gridArea={"header"}
-      >
-        <p>Welcome to Rain or Shine!</p>
-        <div className="scrollingText">
-          {dailyWeather ? (
-            <p>{dailyWeather[0].summary}</p>
-          ) : (
-              null
-            )}
-        </div>
-      </Container>
-      {currentWeather ? (
-        <>
-          <Tilt>
+    // <WeatherProvider>
+      <div className="app">
+        <Container
+          gridArea={"header"}
+        >
+          <p>Welcome to Rain or Shine!</p>
+          <div className="scrollingText">
+            {dailyWeather ? (
+              <p>{dailyWeather[0].summary}</p>
+            ) : (
+                null
+              )}
+          </div>
+        </Container>
+        {currentWeather ? (
+          <>
+            <Tilt>
+              <Container
+                gridArea={"weatherIcon"}
+              >
+                <WeatherIcon
+                  icon={currentWeather.icon}
+                  dayOrNight={dayOrNight}
+                />
+              </Container>
+            </Tilt>
             <Container
-              gridArea={"weatherIcon"}
+              gridArea={"details"}
             >
-              <WeatherIcon
-                icon={currentWeather.icon}
-                dayOrNight={dayOrNight}
+              <WeatherDetail
+                weatherCondition={"Temperature(F)"}
+                weatherInfo={currentWeather.temperature}
+              />
+              <WeatherDetail
+                weatherCondition={"Humidity"}
+                weatherInfo={currentWeather.humidity}
+              />
+              <WeatherDetail
+                weatherCondition={"Chance of Precipitation"}
+                weatherInfo={`${currentWeather.precipProbability}%`}
+              />
+              <WeatherDetail
+                weatherCondition={"Wind Speed(mph)"}
+                weatherInfo={`${currentWeather.windSpeed}`}
+              />
+              <WeatherDetail
+                weatherCondition={"Wind Direction"}
+                weatherInfo={currentWeather.windBearing}
+              />
+              <WeatherDetail
+                weatherCondition={"UV Index"}
+                weatherInfo={currentWeather.uvIndex}
               />
             </Container>
-          </Tilt>
-          <Container
-            gridArea={"details"}
-          >
-            <WeatherDetail
-              weatherCondition={"Temperature(F)"}
-              weatherInfo={currentWeather.temperature}
-            />
-            <WeatherDetail
-              weatherCondition={"Humidity"}
-              weatherInfo={currentWeather.humidity}
-            />
-            <WeatherDetail
-              weatherCondition={"Chance of Precipitation"}
-              weatherInfo={`${currentWeather.precipProbability}%`}
-            />
-            <WeatherDetail
-              weatherCondition={"Wind Speed(mph)"}
-              weatherInfo={`${currentWeather.windSpeed}`}
-            />
-            <WeatherDetail
-              weatherCondition={"Wind Direction"}
-              weatherInfo={currentWeather.windBearing}
-            />
-            <WeatherDetail
-              weatherCondition={"UV Index"}
-              weatherInfo={currentWeather.uvIndex}
-            />
-          </Container>
-        </>
-      ) : (
-          <p>Retrieving Weather</p>
-        )}
-      <Container
-        gridArea={"weatherPlot"}
-      >
-        <ForecastPlot
-          forecast={dailyWeather}
-        />
-      </Container>
-    </div>
+          </>
+        ) : (
+            <p>Retrieving Weather</p>
+          )}
+        <Container
+          gridArea={"weatherPlot"}
+        >
+          <ForecastPlot
+            forecast={dailyWeather}
+          />
+        </Container>
+      </div>
+    // </WeatherProvider>
   );
 }
 
