@@ -58,7 +58,10 @@ const ForecastPlot = (props) => {
 
         data.forEach((date) => {
             date.tempTime = parseDate(date.tempTime)
+            // date.tempTime = date.tempTime.toString().split("").slice(0, 21).join("");
         });
+
+        console.log(data)
 
         const maxTemp = data.reduce(function (a, b) {
             return (a.temp > b.temp) ? a : b;
@@ -146,7 +149,7 @@ const ForecastPlot = (props) => {
             .on("mouseover", handleMouseOver)
             .on("mouseout", handleMouseOut);
 
-        const div = d3.select("body")
+        const div = d3.select(".plot")
             .append("div")
             .attr("class", "toolTip")
             .style("opacity", 0);
@@ -154,15 +157,17 @@ const ForecastPlot = (props) => {
         function handleMouseOver(d) {
             d3.select(this)
                 .transition()
-                .attr("r", 5);
+                .duration(200)
+                .attr("r", 10);
 
             div.transition()
+                .delay(100)
                 .duration(200)
                 .style("opacity", 0.9);
 
-            div.html(d.tempTime + "<br/>" + d.temp)
-                .style("left", `${d3.event.pageX}px`)
-                .style("top", `${d3.event.pageY - 30}px`);
+            div.html(`<strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
+                .style("left", `${d3.event.pageX - 55}px`)
+                .style("top", `${d3.event.pageY}px`);
         };
 
         function handleMouseOut(d) {
