@@ -144,16 +144,35 @@ const ForecastPlot = (props) => {
             .attr("cy", function (d) { return y(d.temp); })
             .attr("r", 2.5)
             .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut);
+
+        const div = d3.select("body")
+            .append("div")
+            .attr("class", "toolTip")
+            .style("opacity", 0);
 
         function handleMouseOver(d) {
             d3.select(this)
                 .transition()
                 .attr("r", 5);
 
-            svg.append("text")
-                .attr("x", function () { return x(d.tempTime); })
-                .attr("y", function () { return y(d.temp); })
-                .text(function () { return [d.tempTime, d.temp] })
+            div.transition()
+                .duration(200)
+                .style("opacity", 0.9);
+
+            div.html(d.tempTime + "<br/>" + d.temp)
+                .style("left", `${d3.event.pageX}px`)
+                .style("top", `${d3.event.pageY - 30}px`);
+        };
+
+        function handleMouseOut(d) {
+            d3.select(this)
+                .transition()
+                .attr("r", 2.5);
+
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
         };
     };
 
