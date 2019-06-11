@@ -51,7 +51,7 @@ const ForecastPlot = (props) => {
             bottom: 30,
             left: 60
         },
-            width = windowWidth - margin.left - margin.right,
+            width = (windowWidth / 1.15) - margin.left - margin.right,
             height = 550 - margin.top - margin.bottom;
 
         const parseDate = d3.timeParse("%s")
@@ -60,8 +60,6 @@ const ForecastPlot = (props) => {
             date.tempTime = parseDate(date.tempTime)
             // date.tempTime = date.tempTime.toString().split("").slice(0, 21).join("");
         });
-
-        console.log(data)
 
         const maxTemp = data.reduce(function (a, b) {
             return (a.temp > b.temp) ? a : b;
@@ -147,6 +145,7 @@ const ForecastPlot = (props) => {
             .attr("cy", function (d) { return y(d.temp); })
             .attr("r", 2.5)
             .on("mouseover", handleMouseOver)
+            // .on("mousemove", handleMouseMove)
             .on("mouseout", handleMouseOut);
 
         const div = d3.select(".plot")
@@ -160,6 +159,8 @@ const ForecastPlot = (props) => {
                 .duration(200)
                 .attr("r", 10);
 
+            console.log(d3.select(this))
+
             div.transition()
                 .delay(100)
                 .duration(200)
@@ -167,8 +168,15 @@ const ForecastPlot = (props) => {
 
             div.html(`<strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
                 .style("left", `${d3.event.pageX - 55}px`)
-                .style("top", `${d3.event.pageY}px`);
+                .style("top", `${d3.event.pageY + 20}px`)
+                // .style("fill", d3.mouse(this).color)
         };
+
+        // function handleMouseMove(d) {
+        //     // div.html(`<strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
+        //         div.style("left", (d3.mouse(this)[0]) + "px")
+        //         .style("top", (d3.mouse(this)[1]) + "px")
+        // };
 
         function handleMouseOut(d) {
             d3.select(this)
