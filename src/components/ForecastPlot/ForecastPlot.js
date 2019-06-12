@@ -7,7 +7,6 @@ import "weather-underground-icons";
 const ForecastPlot = (props) => {
 
     // const [weather, setWeather] = useContext(WeatherContext)
-    // console.log(weather);
     const [forecastData, setForecastData] = useState(null)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -61,7 +60,6 @@ const ForecastPlot = (props) => {
 
         data.forEach((date) => {
             date.tempTime = parseDate(date.tempTime)
-            // date.tempTime = date.tempTime.toString().split("").slice(0, 21).join("");
         });
 
         const maxTemp = data.reduce(function (a, b) {
@@ -147,7 +145,6 @@ const ForecastPlot = (props) => {
             .attr("cy", function (d) { return y(d.temp); })
             .attr("r", 2.5)
             .on("mouseover", handleMouseOver)
-            // .on("mousemove", handleMouseMove)
             .on("mouseout", handleMouseOut);
 
         const div = d3.select(".plot")
@@ -171,12 +168,6 @@ const ForecastPlot = (props) => {
                 .style("top", `${d3.event.pageY + 20}px`)
             // .style("border-color", `${rgb}`)
         };
-
-        // function handleMouseMove(d) {
-        //     // div.html(`<strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
-        //         div.style("left", (d3.mouse(this)[0]) + "px")
-        //         .style("top", (d3.mouse(this)[1]) + "px")
-        // };
 
         function handleMouseOut(d) {
             d3.select(this)
