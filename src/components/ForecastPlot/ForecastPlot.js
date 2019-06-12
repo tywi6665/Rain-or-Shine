@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import * as d3 from "d3";
 import "./ForecastPlot.scss";
+import "weather-underground-icons";
 // import { WeatherContext } from "../../context/weatherContext";
 
 const ForecastPlot = (props) => {
@@ -23,11 +24,13 @@ const ForecastPlot = (props) => {
                     date: data.time,
                     temp: data.temperatureHigh,
                     tempTime: data.temperatureHighTime,
+                    icon: data.icon.replace(/-/g, "").replace("day", "").replace("night", "")
                 });
                 forecastDataArr.push({
                     date: data.time,
                     temp: data.temperatureLow,
-                    tempTime: data.temperatureLowTime
+                    tempTime: data.temperatureLowTime,
+                    icon: data.icon.replace(/-/g, "").replace("day", "").replace("night", "")
                 })
             });
             setForecastData(forecastDataArr);
@@ -124,7 +127,6 @@ const ForecastPlot = (props) => {
             .selectAll("stop")
             .data([
                 { offset: "0%", color: "#1A12FE" },
-                // { offset: "50%", color: "gray" },
                 { offset: "100%", color: "#FE1212" }
             ])
             .enter().append("stop")
@@ -159,17 +161,15 @@ const ForecastPlot = (props) => {
                 .duration(200)
                 .attr("r", 10);
 
-            console.log(d3.select(this))
-
             div.transition()
                 .delay(100)
                 .duration(200)
                 .style("opacity", 0.9);
 
-            div.html(`<strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
+            div.html(`<i class="wu wu-white wu-${d.icon} wu-64 icon"></i><br/><strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
                 .style("left", `${d3.event.pageX - 55}px`)
                 .style("top", `${d3.event.pageY + 20}px`)
-                // .style("fill", d3.mouse(this).color)
+            // .style("border-color", `${rgb}`)
         };
 
         // function handleMouseMove(d) {
@@ -188,8 +188,6 @@ const ForecastPlot = (props) => {
                 .style("opacity", 0);
         };
     };
-
-
 
     return (
         <div className="plot"></div>
