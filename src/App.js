@@ -29,10 +29,11 @@ function App() {
         currently.windBearing = degToCardinal(currently.windBearing)
         setDailyWeather(daily);
         setCurrentWeather(currently);
-        if (Date.now() < daily.sunsetTime) {
-          setDayOrNight("night");
-        } else {
+        let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
+        if (modifiedCurrentTime > daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
           setDayOrNight("day");
+        } else {
+          setDayOrNight("night");
         }
       })
   }, []);
@@ -46,7 +47,9 @@ function App() {
   return (
     // <WeatherProvider>
       <div className="app">
-        <Background />
+        <Background 
+          dayOrNight={dayOrNight}
+        />
         <Container
           gridArea={"header"}
         >

@@ -1,7 +1,8 @@
 import React from 'react';
 import "./Background.scss";
 
-const Background = (props) => {
+const Background = ({ dayOrNight }) => {
+    console.log(dayOrNight)
     return (
         <div className="backgroundImage">
             <div className="mountains">
