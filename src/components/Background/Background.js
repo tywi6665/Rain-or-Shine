@@ -4,7 +4,7 @@ import "./Background.scss";
 const Background = ({ dayOrNight }) => {
     console.log(dayOrNight)
     return (
-        <div className="backgroundImage">
+        <div className={`backgroundImage ${dayOrNight}`}>
             <div className="mountains">
                 <div className="large-mountain-farleft"></div>
                 <div className="large-mountain-farright"></div>
