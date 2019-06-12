@@ -12,7 +12,7 @@ const Tilt = ({ children }) => {
     const maxScale = 1;
     // const maxShadowDisplacement = 0.1;
     // const shadowRadius = "20px";
-    // const shadowColor = "rgba(0, 0, 0, 0.5)";
+    // const shadowColor = "rgba(244, 167, 29, 0.9)";
     const perspective = "1000px";
     const easing = "ease-in-out";
 
