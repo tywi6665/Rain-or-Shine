@@ -12,7 +12,30 @@
     width: 100%;
     // background: radial-gradient(filter: opacity(0.2));
     bottom: 0;
-    left: 0;    
+    left: 0;
+    
+    .large-mountain-farleft {
+        position: absolute;
+        bottom: 0;
+        left: -13%;
+        width: 20%;
+        height: 55%;
+        background: #AF7B53;
+        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        z-index: 3;
+    }
+
+    .large-mountain-farright {
+        position: absolute;
+        bottom: 0;
+        left: 7%;
+        width: 20%;
+        height: 55%;
+        background: #AB936D;
+        clip-path: polygon(0 1%, 0% 100%, 100% 100%);
+        z-index: 3;
+    }
 
     .small-mountain-left {
         position: absolute;
@@ -37,7 +60,30 @@
         z-index: 2;
     }
 
-    .mountain-left {
+    .medium-mountain-left {
+        position: absolute;
+        bottom: 0;
+        left: 18%;
+        width: 25.1%;
+        height: 35%;
+        background: #AF7B53;
+        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        z-index: 1;
+    }
+
+    .medium-mountain-right {
+        position: absolute;
+        bottom: 0;
+        left: 43%;
+        width: 25%;
+        height: 35%;
+        background: #AB936D;
+        clip-path: polygon(0 1%, 0% 100%, 100% 100%);
+        z-index: 1;
+    }
+
+    .large-mountain-left {
         position: absolute;
         bottom: 0;
         right: 35%;
@@ -49,7 +95,7 @@
         z-index: 3;
     }
 
-    .mountain-right {
+    .large-mountain-right {
         position: absolute;
         bottom: 0;
         right: 0;
@@ -58,5 +104,28 @@
         background: #AB936D;
         clip-path: polygon(0 1%, 0% 100%, 100% 100%);
         z-index: 3;
+    }
+
+    .medium-mountain-farleft {
+        position: absolute;
+        bottom: 0;
+        right: 4%;
+        width: 20%;
+        height: 32%;
+        background: #AF7B53;
+        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        z-index: 1;
+    }
+
+    .medium-mountain-farright {
+        position: absolute;
+        bottom: 0;
+        right: -16%;
+        width: 20%;
+        height: 32%;
+        background: #AB936D;
+        clip-path: polygon(0 1%, 0% 100%, 100% 100%);
+        z-index: 1;
     }
 }
