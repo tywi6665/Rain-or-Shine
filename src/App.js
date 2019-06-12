@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Background from './components/Background/Background';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
 import WeatherDetail from "./components/WeatherDetail";
@@ -45,6 +46,7 @@ function App() {
   return (
     // <WeatherProvider>
       <div className="app">
+        <Background />
         <Container
           gridArea={"header"}
         >
