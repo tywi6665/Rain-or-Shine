@@ -30,7 +30,7 @@ function App() {
         setDailyWeather(daily);
         setCurrentWeather(currently);
         let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
-        if (modifiedCurrentTime > daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
+        if (modifiedCurrentTime < daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
           setDayOrNight("day");
         } else {
           setDayOrNight("night");

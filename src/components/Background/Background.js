@@ -7,9 +7,9 @@ const Background = ({ dayOrNight }) => {
         <div className={`backgroundImage ${dayOrNight}`}>
             {dayOrNight === "night" ? (
                 <div className="moon">
-                    <div className="moon-crater"></div>
-                    <div className="moon-crater"></div>
-                    <div className="moon-crater"></div>
+                    <div className="crater crater1"></div>
+                    <div className="crater crater2"></div>
+                    <div className="crater crater3"></div>
                 </div>
             ) : (
                 <div className="sun">

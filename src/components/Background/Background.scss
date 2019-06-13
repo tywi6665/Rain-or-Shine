@@ -134,7 +134,35 @@
 
 .moon {
     background: white;
-    box-shadow: 0px 0px 60px 5px white;
+    box-shadow: 0px 0px 100px 25px white;
+
+    .crater {
+        position: absolute;
+        border-radius: 50%;
+        background: slategray;
+        box-shadow: 0px 0px 25px 4px slategray;
+    }
+
+    .crater1 {
+        width: 15px;
+        height: 15px;
+        top: 20px;
+        left: 15px;
+    }
+
+    .crater2 {
+        width: 15px;
+        height: 15px;
+        top: 48px;
+        left: 30px;
+    }
+
+    .crater3 {
+        width: 20px;
+        height: 20px;
+        top: 35px;
+        left: 48px;
+    }
 }
 
 .mountains {
