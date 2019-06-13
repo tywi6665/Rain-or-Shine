@@ -195,7 +195,7 @@
     margin: 0;
     z-index: 5;
     // overflow: hidden;
-    animation: fade_in 2s;
+    animation: fade_in 4s;
 
     .cloud {
         position: absolute;
@@ -300,10 +300,21 @@
         left: -13%;
         width: 20%;
         height: 55%;
-        background: #AF7B53;
+        background: #044946;
         // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         z-index: 3;
+    
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #044946 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .large-mountain-farright {
@@ -312,9 +323,20 @@
         left: 7%;
         width: 20%;
         height: 55%;
-        background: #AB936D;
+        background: #38845e;
         clip-path: polygon(0 1%, 0% 100%, 100% 100%);
         z-index: 3;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #38845e 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .small-mountain-left {
@@ -323,11 +345,22 @@
         left: 0;
         width: 25.1%;
         height: 40%;
-        background: #AF7B53;
+        background: #044946;
         // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         opacity: 0.9;
         z-index: 2;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #044946 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .small-mountain-right {
@@ -336,9 +369,20 @@
         left: 25%;
         width: 25%;
         height: 40%;
-        background: #AB936D;
+        background: #38845e;
         clip-path: polygon(0 1%, 0% 100%, 100% 100%);
         z-index: 2;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #38845e 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .medium-mountain-left {
@@ -347,11 +391,22 @@
         left: 18%;
         width: 25.1%;
         height: 35%;
-        background: #AF7B53;
+        background: #044946;
         // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         opacity: 0.6;
         z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #044946 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .medium-mountain-right {
@@ -360,10 +415,21 @@
         left: 43%;
         width: 25%;
         height: 35%;
-        background: #AB936D;
+        background: #38845e;
         clip-path: polygon(0 1%, 0% 100%, 100% 100%);
         opacity: 0.6;
         z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #38845e 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .large-mountain-left {
@@ -372,21 +438,21 @@
         right: 35%;
         width: 35.1%;
         height: 60%;
-        background: #AF7B53;
+        background: #044946;
         // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         z-index: 3;
 
-        // .large-mountain-cap {
-        //     position: absolute;
-        //     top: 0;
-        //     left: 90%;
-        //     width: 100%;
-        //     height: 35%;
-        //     background: black;
-        //     clip-path: polygon(50% 0%, 0 55%, 100% 55%);
-        //     z-index: 4;
-        // }
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #044946 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .large-mountain-right {
@@ -395,9 +461,20 @@
         right: 0;
         width: 35%;
         height: 60%;
-        background: #AB936D;
+        background: #38845e;
         clip-path: polygon(0 1%, 0% 100%, 100% 100%);
         z-index: 3;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #38845e 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .medium-mountain-farleft {
@@ -406,11 +483,22 @@
         right: 4%;
         width: 20%;
         height: 32%;
-        background: #AF7B53;
+        background: #044946;
         // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         opacity: 0.7;
         z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #044946 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 
     .medium-mountain-farright {
@@ -419,9 +507,23 @@
         right: -16%;
         width: 20%;
         height: 32%;
-        background: #AB936D;
+        background: #38845e;
         clip-path: polygon(0 1%, 0% 100%, 100% 100%);
         opacity: 0.7;
         z-index: 1;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0%;
+            height: 40px;
+            width: 100%;
+            background: linear-gradient(to top, #38845e 0%, #AF7B53 75%);
+            z-index: 4;
+        }
     }
 }
+
+// #AF7B53
+// #AB936D
