@@ -27,6 +27,13 @@ const Background = ({ dayOrNight }) => {
                     </div>
                 </div>
             )}
+            <div className="clouds">
+                <div className="cloud small-cloud cloud1"></div>
+                <div className="cloud small-cloud cloud2"></div>
+                <div className="cloud large-cloud cloud3"></div>
+                <div className="cloud large-cloud cloud4"></div>
+                <div className="cloud small-cloud cloud5"></div>
+            </div>
             <div className="mountains">
                             <div className="large-mountain-farleft"></div>
                             <div className="large-mountain-farright"></div>

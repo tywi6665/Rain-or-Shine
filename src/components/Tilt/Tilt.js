@@ -13,7 +13,7 @@ const Tilt = ({ children }) => {
     // const maxShadowDisplacement = 0.1;
     // const shadowRadius = "20px";
     // const shadowColor = "rgba(244, 167, 29, 0.9)";
-    const perspective = "1000px";
+    const perspective = "3000px";
     const easing = "ease-in-out";
 
     const onMouseEnter = useCallback(
