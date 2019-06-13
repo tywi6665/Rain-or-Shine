@@ -83,6 +83,12 @@ body {
         background: rgba(240, 240, 240, 0.3);
         border: solid 1px black;
         border-radius: 10px;
+        animation: ease_in 5s ease-out;
+
+        @keyframes ease_in {
+            from {opacity: 0; transform: translateX(100%);}
+            to {opacity: 1; transform: translateX(0);}
+        }
     }
 }
 
