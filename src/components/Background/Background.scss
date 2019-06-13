@@ -16,11 +16,19 @@
 .sun, .moon {
     position: absolute;
     left: 25%;
-    top: 40%;
+    // top: 40%;
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    z-index: 1;
+    z-index: -1;
+    animation-delay: 5s;
+    animation: rise 6s forwards ease-in-out;
+}
+
+@keyframes rise {
+    0% {top: 100%; opacity: 0;}
+    25% {opacity: 0;}
+    100% {top: 40%; opacity: 1;}
 }
 
 .sun {
@@ -29,12 +37,12 @@
 
     .ray-container {
         position: absolute;
-        // margin: auto;
         top: 0px;
         left: 0;
         right: 0;
         bottom: 0;	
         width: 80px;  
+        z-index: -1;
         animation: ray_anim 120s linear infinite;
 
         .ray {
@@ -43,6 +51,7 @@
             margin-left: 15px;
             border-radius: 80% 80% 0 0;
             opacity: 0.2;
+            z-index: -1;
             background: linear-gradient(to top, rgba(255, 255, 0, 0) 0%, rgba(255, 255, 0, 0.8) 50%, rgba(255, 255, 0, 0) 100%); 
         }
 
@@ -134,8 +143,7 @@
 
 .moon {
     background: white;
-    box-shadow: 0px 0px 100px 25px white;
-
+    box-shadow: 0px 0px 125px 25px white;
     .crater {
         position: absolute;
         border-radius: 50%;
@@ -169,9 +177,14 @@
     position: absolute;
     height: 50%;
     width: 100%;
-    // background: radial-gradient(filter: opacity(0.2));
     bottom: 0;
     left: 0;
+    animation: fade_in 5s;
+
+    @keyframes fade_in {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
     
     .large-mountain-farleft {
         position: absolute;

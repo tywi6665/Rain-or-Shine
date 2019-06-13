@@ -30,7 +30,7 @@ function App() {
         setDailyWeather(daily);
         setCurrentWeather(currently);
         let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
-        if (modifiedCurrentTime < daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
+        if (modifiedCurrentTime > daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
           setDayOrNight("day");
         } else {
           setDayOrNight("night");
@@ -46,25 +46,30 @@ function App() {
 
   return (
     // <WeatherProvider>
-      <div className="app">
-        <Background 
+    <div className="app">
+      {dayOrNight ? (
+        <Background
           dayOrNight={dayOrNight}
         />
-        <Container
-          gridArea={"header"}
-        >
-          <p>Welcome to Rain or Shine!</p>
-          <div className="scrollingText">
-            {dailyWeather ? (
-              <p>{dailyWeather[0].summary}</p>
-            ) : (
-                null
-              )}
-          </div>
-        </Container>
-        {currentWeather ? (
-          <>
-            {/* <Tilt>
+      ) : (
+          ""
+        )
+      }
+      <Container
+        gridArea={"header"}
+      >
+        <p>Welcome to Rain or Shine!</p>
+        <div className="scrollingText">
+          {dailyWeather ? (
+            <p>{dailyWeather[0].summary}</p>
+          ) : (
+              null
+            )}
+        </div>
+      </Container>
+      {currentWeather ? (
+        <>
+          {/* <Tilt>
               <Container
                 gridArea={"weatherIcon"}
               >
@@ -74,46 +79,46 @@ function App() {
                 />
               </Container>
             </Tilt> */}
-            <Container
-              gridArea={"details"}
-            >
-              <WeatherDetail
-                weatherCondition={"Temperature(F)"}
-                weatherInfo={currentWeather.temperature}
-              />
-              <WeatherDetail
-                weatherCondition={"Humidity"}
-                weatherInfo={currentWeather.humidity}
-              />
-              <WeatherDetail
-                weatherCondition={"Chance of Precipitation"}
-                weatherInfo={`${currentWeather.precipProbability}%`}
-              />
-              <WeatherDetail
-                weatherCondition={"Wind Speed(mph)"}
-                weatherInfo={`${currentWeather.windSpeed}`}
-              />
-              <WeatherDetail
-                weatherCondition={"Wind Direction"}
-                weatherInfo={currentWeather.windBearing}
-              />
-              <WeatherDetail
-                weatherCondition={"UV Index"}
-                weatherInfo={currentWeather.uvIndex}
-              />
-            </Container>
-          </>
-        ) : (
-            <p>Retrieving Weather</p>
-          )}
-        <Container
-          gridArea={"weatherPlot"}
-        >
-          <ForecastPlot
-            forecast={dailyWeather}
-          />
-        </Container>
-      </div>
+          <Container
+            gridArea={"details"}
+          >
+            <WeatherDetail
+              weatherCondition={"Temperature(F)"}
+              weatherInfo={currentWeather.temperature}
+            />
+            <WeatherDetail
+              weatherCondition={"Humidity"}
+              weatherInfo={currentWeather.humidity}
+            />
+            <WeatherDetail
+              weatherCondition={"Chance of Precipitation"}
+              weatherInfo={`${currentWeather.precipProbability}%`}
+            />
+            <WeatherDetail
+              weatherCondition={"Wind Speed(mph)"}
+              weatherInfo={`${currentWeather.windSpeed}`}
+            />
+            <WeatherDetail
+              weatherCondition={"Wind Direction"}
+              weatherInfo={currentWeather.windBearing}
+            />
+            <WeatherDetail
+              weatherCondition={"UV Index"}
+              weatherInfo={currentWeather.uvIndex}
+            />
+          </Container>
+        </>
+      ) : (
+          <p>Retrieving Weather</p>
+        )}
+      <Container
+        gridArea={"weatherPlot"}
+      >
+        <ForecastPlot
+          forecast={dailyWeather}
+        />
+      </Container>
+    </div>
     // </WeatherProvider>
   );
 }
