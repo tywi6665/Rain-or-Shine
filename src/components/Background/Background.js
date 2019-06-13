@@ -5,6 +5,15 @@ const Background = ({ dayOrNight }) => {
     console.log(dayOrNight)
     return (
         <div className={`backgroundImage ${dayOrNight}`}>
+            {dayOrNight === "night" ? (
+                <div className="moon">
+                    <div className="moon-crater"></div>
+                    <div className="moon-crater"></div>
+                    <div className="moon-crater"></div>
+                </div>
+            ) : (
+                <div className="sun"></div>
+            )}
             <div className="mountains">
                 <div className="large-mountain-farleft"></div>
                 <div className="large-mountain-farright"></div>

@@ -64,7 +64,7 @@ function App() {
         </Container>
         {currentWeather ? (
           <>
-            <Tilt>
+            {/* <Tilt>
               <Container
                 gridArea={"weatherIcon"}
               >
@@ -73,7 +73,7 @@ function App() {
                   dayOrNight={dayOrNight}
                 />
               </Container>
-            </Tilt>
+            </Tilt> */}
             <Container
               gridArea={"details"}
             >
