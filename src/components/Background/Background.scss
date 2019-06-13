@@ -149,6 +149,51 @@
     }
 }
 
+.stars {
+    z-index: -10;
+
+    @function generate_stars ($width, $color, $density) {
+        $h-shadow: random($width);
+        $v-shadow: random($width);
+
+        $stars: "#{$h-shadow}px #{$v-shadow}px #{$color}";
+        @for $i from 2 through $density {
+            $h-shadow: random($width);
+            $v-shadow: random($width);
+            $stars: "#{$stars}, #{$h-shadow}px #{$v-shadow}px #{$color}";
+        }
+        @return unquote($stars);
+    }
+
+    @mixin star_content($width, $color, $density, $speed, $delay) {
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: -10;
+        box-shadow: generate_stars($width, $color, $density);
+        animation: twinkle $speed+s linear $delay+s infinite alternate;
+    }
+
+    @keyframes twinkle {
+        0% {opacity: 0;}
+        50% { opacity: 1;}
+        100% { opacity: 0;}
+    }
+
+    .star-group1 {
+        @include star_content(2000, #fff, 100, 2, 0);
+    }
+
+    .star-group2 {
+        @include star_content(2000, #fff, 100, 2, 0.2);
+    }
+
+    .star-group3 {
+        @include star_content(2000, #fff, 100, 4, 0.5);
+    }
+}
+
 .moon {
     background: white;
     box-shadow: 0px 0px 125px 25px white;
