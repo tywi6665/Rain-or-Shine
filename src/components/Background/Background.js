@@ -34,7 +34,9 @@ const Background = ({ dayOrNight }) => {
                             <div className="small-mountain-right"></div>
                             <div className="medium-mountain-left"></div>
                             <div className="medium-mountain-right"></div>
-                            <div className="large-mountain-left"></div>
+                            <div className="large-mountain-left">
+                                {/* <div className="large-mountain-cap"></div> */}
+                            </div>
                             <div className="large-mountain-right"></div>
                             <div className="medium-mountain-farleft"></div>
                             <div className="medium-mountain-farright"></div>
