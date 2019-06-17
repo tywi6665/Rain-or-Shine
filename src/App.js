@@ -52,6 +52,12 @@ function App() {
           }`
       }}
     >
+      <div className="unitToggle">
+        <input type="checkbox" id="switch"
+          onChange={() => { isMetric ? setIsMetric(false) : setIsMetric(true) }}
+        />
+        <label htmlFor="switch"></label>
+      </div>
       {dayOrNight ? (
         <Background
           dayOrNight={dayOrNight}
@@ -64,10 +70,6 @@ function App() {
         gridArea={"header"}
       >
         <p>Welcome to Rain or Shine!</p>
-        <label htmlFor="switch">Toggle</label>
-        <input type="checkbox" id="switch"
-          onClick={() => { isMetric ? setIsMetric(false) : setIsMetric(true) }}
-        />
         <div className="scrollingText">
           {dailyWeather ? (
             <p>{dailyWeather[0].summary}</p>
@@ -111,8 +113,8 @@ function App() {
                   isMetric ? (
                     (currentWeather.windSpeed * 1.60934).toString().slice(0, 4)
                   ) : (
-                    currentWeather.windSpeed)}
-      />
+                      currentWeather.windSpeed)}
+              />
               <WeatherDetail
                 weatherCondition={"Wind Direction"}
                 weatherInfo={currentWeather.windBearing}
