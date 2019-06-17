@@ -1,10 +1,10 @@
 .tilt {
     width: fit-content;
     height: fit-content;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
     .innerTilt {
         display: flex;
@@ -13,10 +13,6 @@
         transform-style: preserve-3d;
         transform-origin: center center;
         perspective-origin: center center;
-        
-        // i {
-        //     background: radial-gradient(#e66465, #9198e5)
-        // }
     }
 
     &:hover {

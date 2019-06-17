@@ -5,14 +5,11 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    // overflow: hidden;
-    // background: linear-gradient(to bottom, #81cdff, #b9ecff, #ffffff);
 }
 
 .app {
     height: 100%;
     width: 100%;
-    // padding: 5px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 0.25fr 1fr 1fr 2fr 0.15fr;
@@ -62,6 +59,7 @@ body {
 
 .tilt {
     grid-area: details;
+    margin-right: 8%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -110,6 +108,22 @@ body {
     p {
         display: inline;
         margin-right: 5px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .app {
+        grid-template-areas: 
+            "header header"
+            "details details"
+            ". ."
+            "weatherPlot weatherPlot"
+            ". .";
+
+        .tilt, .details {
+            margin-right: 0;
+            margin: 0 auto;
+        }
     }
 }
 

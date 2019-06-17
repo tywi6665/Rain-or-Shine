@@ -1,13 +1,9 @@
 .container {
     text-align: center;
-    // background: rgba(240, 240, 240, 0.8);
-    // border: solid 1px black;
-    // border-radius: 10px;
 }
 
 .container .weatherDetail {
-    margin: 10px;
-    padding: 5px;
+    padding: 10px;
     
     p {
         width: 100%;
@@ -20,5 +16,4 @@
     display: grid;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
-    grid-row-gap: 5px;
 }

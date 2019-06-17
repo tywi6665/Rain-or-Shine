@@ -94,6 +94,7 @@ function App() {
               <WeatherIcon
                 icon={currentWeather.icon}
                 dayOrNight={dayOrNight}
+                size={window.innerWidth < 550 ? "128" : "256"}
                 gridArea={"weatherDetail"}
               />
               <span></span>
