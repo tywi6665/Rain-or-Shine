@@ -4,7 +4,7 @@ import "./ForecastPlot.scss";
 import "weather-underground-icons";
 // import { WeatherContext } from "../../context/weatherContext";
 
-const ForecastPlot = (props) => {
+const ForecastPlot = ({ forecast, isMetric }) => {
 
     // const [weather, setWeather] = useContext(WeatherContext)
     const [forecastData, setForecastData] = useState(null)
@@ -12,9 +12,9 @@ const ForecastPlot = (props) => {
 
     useEffect(() => {
 
-        if (props.forecast) {
+        if (forecast) {
 
-            const rawForecastData = props.forecast;
+            const rawForecastData = forecast;
 
             let forecastDataArr = [];
 
@@ -32,11 +32,17 @@ const ForecastPlot = (props) => {
                     icon: data.icon.replace(/-/g, "").replace("day", "").replace("night", "")
                 })
             });
+
+            if (isMetric) {
+                forecastDataArr.forEach((date) => {
+                    date.temp = Number(((date.temp - 32) * 5 / 9).toString().slice(0, 5))
+                });
+            }
             console.log(forecastDataArr)
             setForecastData(forecastDataArr);
             plot(forecastDataArr);
         }
-    }, [props.forecast, windowWidth])
+    }, [forecast, isMetric, windowWidth])
 
     useEffect(() => {
         const handleResize = () => setWindowWidth(window.innerWidth);
@@ -48,7 +54,7 @@ const ForecastPlot = (props) => {
 
         d3.select(".d3plot").remove();
 
-        data.pop();
+        // data.pop();
 
         const margin = {
             top: 20,
@@ -118,7 +124,7 @@ const ForecastPlot = (props) => {
             .attr("x", 0 - (height / 2))
             .attr("dy", "1em")
             .style("text-anchor", "middle")
-            .text("Temperature(ºF)");
+            .text(isMetric ? "Temperature(C)" : "Temperature(F)");
 
         svg.append("linearGradient")
             .attr("id", "temp-gradient")
@@ -166,7 +172,7 @@ const ForecastPlot = (props) => {
                 .duration(200)
                 .style("opacity", 0.9);
 
-            div.html(`<i class="wu wu-white wu-${d.icon} wu-64 icon"></i><br/><strong>${d.temp}ºF</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
+            div.html(`<i class="wu wu-white wu-${d.icon} wu-64 icon"></i><br/><strong>${d.temp}º${isMetric ? "C" : "F"}</strong><br/><p>${d.tempTime.toString().split("").slice(0, 21).join("")}</p>`)
                 .style("left", `${d3.event.pageX - 55}px`)
                 .style("top", `${d3.event.pageY + 20}px`)
             // .style("border-color", `${rgb}`)

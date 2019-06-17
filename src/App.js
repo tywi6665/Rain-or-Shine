@@ -135,6 +135,7 @@ function App() {
       >
         <ForecastPlot
           forecast={dailyWeather}
+          isMetric={isMetric}
         />
       </Container>
     </div>
