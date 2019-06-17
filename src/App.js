@@ -14,17 +14,15 @@ function App() {
 
   // const [weather, setWeather] = useContext(WeatherContext)
 
-  const [currentWeather, setCurrentWeather] = useState(null)
-  // const [minuteWeather, setMinuteWeather] = useState(null)
-  // const [hourWeather, setHourWeather] = useState(null)
-  const [dailyWeather, setDailyWeather] = useState(null)
-  const [dayOrNight, setDayOrNight] = useState("")
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [dailyWeather, setDailyWeather] = useState(null);
+  const [dayOrNight, setDayOrNight] = useState("");
+  const [isCelius, setIsCelius] = useState(false);
 
   useEffect(() => {
     API.getWeather()
       .then(res => {
         let currently = res.data.currently;
-        // let hourly = res.data.hourly.data;
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
         currently.windBearing = degToCardinal(currently.windBearing)
@@ -64,6 +62,10 @@ function App() {
         gridArea={"header"}
       >
         <p>Welcome to Rain or Shine!</p>
+        <label htmlFor="switch">Toggle</label>
+        <input type="checkbox" id="switch"
+          onClick={() => {isCelius ? setIsCelius(false) : setIsCelius(true)}}
+        />
         <div className="scrollingText">
           {dailyWeather ? (
             <p>{dailyWeather[0].summary}</p>
