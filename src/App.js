@@ -47,7 +47,11 @@ function App() {
 
   return (
     // <WeatherProvider>
-    <div className="app">
+    <div className="app"
+      style={{color: `${dayOrNight === "night" ? (
+        "whitesmoke") : ("black")
+      }`}}
+    >
       {dayOrNight ? (
         <Background
           dayOrNight={dayOrNight}
@@ -70,16 +74,6 @@ function App() {
       </Container>
       {currentWeather ? (
         <>
-          {/* <Tilt>
-              <Container
-                gridArea={"weatherIcon"}
-              >
-                <WeatherIcon
-                  icon={currentWeather.icon}
-                  dayOrNight={dayOrNight}
-                />
-              </Container>
-            </Tilt> */}
           <Tilt>
             <Container
               gridArea={"details"}
@@ -96,6 +90,13 @@ function App() {
                 weatherCondition={"Chance of Precipitation"}
                 weatherInfo={`${currentWeather.precipProbability}%`}
               />
+              <span></span>
+              <WeatherIcon
+                icon={currentWeather.icon}
+                dayOrNight={dayOrNight}
+                gridArea={"weatherDetail"}
+              />
+              <span></span>
               <WeatherDetail
                 weatherCondition={"Wind Speed(mph)"}
                 weatherInfo={`${currentWeather.windSpeed}`}

@@ -32,6 +32,7 @@ const ForecastPlot = (props) => {
                     icon: data.icon.replace(/-/g, "").replace("day", "").replace("night", "")
                 })
             });
+            console.log(forecastDataArr)
             setForecastData(forecastDataArr);
             plot(forecastDataArr);
         }
@@ -46,6 +47,8 @@ const ForecastPlot = (props) => {
     function plot(data) {
 
         d3.select(".d3plot").remove();
+
+        data.pop();
 
         const margin = {
             top: 20,

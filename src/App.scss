@@ -5,6 +5,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
+    // overflow: hidden;
     // background: linear-gradient(to bottom, #81cdff, #b9ecff, #ffffff);
 }
 
@@ -14,12 +15,14 @@ body {
     // padding: 5px;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 0.25fr 1fr 1fr 2fr;
+    grid-template-rows: 0.25fr 1fr 1fr 2fr 0.15fr;
     grid-template-areas: 
         "header header"
-        "weatherIcon details"
+        ". details"
         ". ."
-        "weatherPlot weatherPlot";
+        "weatherPlot weatherPlot"
+        ". .";
+    overflow: hidden;
 }
 
 .header {
@@ -51,11 +54,11 @@ body {
     }
 }
 
-.weatherIcon {
-    grid-area: weatherIcon;
-    perspective: 50px;
-    perspective-origin: center;
-}
+// .weatherIcon {
+//     grid-area: weatherIcon;
+//     perspective: 50px;
+//     perspective-origin: center;
+// }
 
 .tilt {
     grid-area: details;
@@ -71,7 +74,6 @@ body {
         transform-style: preserve-3d;
         transform-origin: center center;
         perspective-origin: center center;
-        // background-image: radial-gradient(#e66465, transparent);
     }
 
     &:hover {
