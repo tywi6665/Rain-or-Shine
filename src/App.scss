@@ -113,12 +113,13 @@ body {
 
 @media only screen and (max-width: 900px) {
     .app {
+        grid-template-columns: 100%;
         grid-template-areas: 
-            "header header"
-            "details details"
-            ". ."
-            "weatherPlot weatherPlot"
-            ". .";
+            "header"
+            "details"
+            "."
+            "weatherPlot"
+            ".";
 
         .tilt, .details {
             margin-right: 0;

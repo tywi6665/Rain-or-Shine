@@ -17,7 +17,7 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState(null);
   const [dayOrNight, setDayOrNight] = useState("");
-  const [isCelius, setIsCelius] = useState(false);
+  const [isMetric, setIsMetric] = useState(false);
 
   useEffect(() => {
     API.getWeather()
@@ -46,9 +46,11 @@ function App() {
   return (
     // <WeatherProvider>
     <div className="app"
-      style={{color: `${dayOrNight === "night" ? (
-        "whitesmoke") : ("black")
-      }`}}
+      style={{
+        color: `${dayOrNight === "night" ? (
+          "whitesmoke") : ("black")
+          }`
+      }}
     >
       {dayOrNight ? (
         <Background
@@ -64,7 +66,7 @@ function App() {
         <p>Welcome to Rain or Shine!</p>
         <label htmlFor="switch">Toggle</label>
         <input type="checkbox" id="switch"
-          onClick={() => {isCelius ? setIsCelius(false) : setIsCelius(true)}}
+          onClick={() => { isMetric ? setIsMetric(false) : setIsMetric(true) }}
         />
         <div className="scrollingText">
           {dailyWeather ? (
@@ -81,8 +83,11 @@ function App() {
               gridArea={"details"}
             >
               <WeatherDetail
-                weatherCondition={"Temperature(F)"}
-                weatherInfo={currentWeather.temperature}
+                weatherCondition={isMetric ? "Temperature(C)" : "Temperature(F)"}
+                weatherInfo={isMetric ? (
+                  ((currentWeather.temperature - 32) * 5 / 9).toString().slice(0, 5)
+                ) : (
+                    currentWeather.temperature)}
               />
               <WeatherDetail
                 weatherCondition={"Humidity"}
@@ -101,9 +106,13 @@ function App() {
               />
               <span></span>
               <WeatherDetail
-                weatherCondition={"Wind Speed(mph)"}
-                weatherInfo={`${currentWeather.windSpeed}`}
-              />
+                weatherCondition={isMetric ? "Wind Speed(kph)" : "Wind Speed(mph)"}
+                weatherInfo={
+                  isMetric ? (
+                    (currentWeather.windSpeed * 1.60934).toString().slice(0, 4)
+                  ) : (
+                    currentWeather.windSpeed)}
+      />
               <WeatherDetail
                 weatherCondition={"Wind Direction"}
                 weatherInfo={currentWeather.windBearing}
