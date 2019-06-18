@@ -1,4 +1,5 @@
 body {
+    background: linear-gradient(to bottom, rgba(245, 247, 250, 1), rgba(195, 207, 226, 1));
     background-attachment: fixed; 
     background-size: cover;
     height: 100%;  
@@ -13,13 +14,13 @@ body {
     // position: relative;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 0.35fr 1fr 1fr 2fr 0.15fr;
+    grid-template-rows: 0.35fr 1fr 1fr 2fr 0.15fr auto;
     grid-template-areas: 
         "header header"
         ". details"
         ". ."
         "weatherPlot weatherPlot"
-        ". .";
+        "footer footer";
     overflow: hidden;
 }
 
@@ -225,6 +226,23 @@ body {
     grid-area: weatherPlot;
 }
 
+.footer {
+    grid-area: footer;
+    background: darkgrey;
+    margin-top: 45px;
+    padding-bottom: 10px;
+    font-family: Copperplate,Copperplate Gothic Light,fantasy;
+    font-size: 0.75rem;
+
+    a {
+        text-decoration: none;
+
+        svg {
+            color: black;
+        }
+    }
+}
+
 .loadingContent {
     position: absolute;
     top: 50%;
@@ -248,7 +266,7 @@ body {
             "details"
             "."
             "weatherPlot"
-            ".";
+            "footer";
 
         .tilt, .details {
             margin-right: 0;

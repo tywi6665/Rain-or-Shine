@@ -180,6 +180,15 @@ function App() {
           isMetric={isMetric}
         />
       </Container>
+      <Container
+        gridArea={"footer"}
+      >
+        <p>Powered by Dark Sky</p>
+        <p>Made by tywi6665</p>
+        <a href="https://github.com/tywi6665" target="_blank">
+          <Icon type="github" />
+        </a>
+      </Container>
     </div>
     // </WeatherProvider>
   );
