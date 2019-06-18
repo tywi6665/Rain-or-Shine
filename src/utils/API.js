@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
     getWeather: function(location) {
         const key = process.env.REACT_APP_DARK_SKY_KEY;
-        return axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${key}/${location.lat},${location.long}`)
+        return axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${key}/${location.lat},${location.lng}`)
     },
 
     getGeocode: function(location) {
