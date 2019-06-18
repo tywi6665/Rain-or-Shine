@@ -38,7 +38,6 @@ const ForecastPlot = ({ forecast, isMetric }) => {
                     date.temp = Number(((date.temp - 32) * 5 / 9).toString().slice(0, 5))
                 });
             }
-            console.log(forecastDataArr)
             setForecastData(forecastDataArr);
             plot(forecastDataArr);
         }

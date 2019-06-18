@@ -19,9 +19,10 @@ function App() {
   const [dayOrNight, setDayOrNight] = useState("");
   const [isMetric, setIsMetric] = useState(false);
   const [location, setLocation] = useState("Denver");
+  const [geolocation, setGeolocation] = useState("39.7392,-104.9903")
 
   useEffect(() => {
-    API.getWeather()
+    API.getWeather(geolocation)
       .then(res => {
         let currently = res.data.currently;
         let daily = res.data.daily.data;
@@ -36,7 +37,14 @@ function App() {
           setDayOrNight("night");
         }
       })
-  }, []);
+  }, [geolocation]);
+
+  useEffect(() => {
+    API.getGeocode(location)
+      .then(res => {
+        console.log(res)
+      })
+  })
 
   function degToCardinal(windBearing) {
     const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
