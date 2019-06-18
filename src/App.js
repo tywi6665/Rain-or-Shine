@@ -19,7 +19,14 @@ function App() {
   const [dayOrNight, setDayOrNight] = useState("");
   const [isMetric, setIsMetric] = useState(false);
   const [location, setLocation] = useState("Denver");
-  const [geolocation, setGeolocation] = useState({lat: "39.7392", lng: "-104.9903"})
+  const [geolocation, setGeolocation] = useState({ lat: "39.7392", lng: "-104.9903" })
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     API.getWeather(geolocation)
@@ -58,11 +65,11 @@ function App() {
   return (
     // <WeatherProvider>
     <div className="app"
-    style={{
-      color: `${dayOrNight === "night" ? (
-        "whitesmoke") : ("black")
-        }`
-    }}
+      style={{
+        color: `${dayOrNight === "night" ? (
+          "whitesmoke") : ("black")
+          }`
+      }}
     >
       <form
         className="enterLocation"
@@ -135,7 +142,7 @@ function App() {
               <WeatherIcon
                 icon={currentWeather.icon}
                 dayOrNight={dayOrNight}
-                size={window.innerWidth < 550 ? "128" : "256"}
+                size={windowWidth < 550 ? "128" : "256"}
                 gridArea={"weatherDetail"}
               />
               <span></span>
@@ -169,6 +176,7 @@ function App() {
       >
         <ForecastPlot
           forecast={dailyWeather}
+          windowWidth={windowWidth}
           isMetric={isMetric}
         />
       </Container>

@@ -5,10 +5,15 @@
   shape-rendering: crispEdges;
 }
 
+.y path {
+  stroke: url(#temp-gradient);
+  stroke-width: 1.5px;
+}
+
 .line {
   fill: none;
   stroke: url(#temp-gradient);
-  stroke-width: 1.5px;
+  stroke-width: 1px;
 }
 
 .dot {

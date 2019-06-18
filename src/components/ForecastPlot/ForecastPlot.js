@@ -4,11 +4,10 @@ import "./ForecastPlot.scss";
 import "weather-underground-icons";
 // import { WeatherContext } from "../../context/weatherContext";
 
-const ForecastPlot = ({ forecast, isMetric }) => {
+const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
     // const [weather, setWeather] = useContext(WeatherContext)
     const [forecastData, setForecastData] = useState(null)
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
 
@@ -43,17 +42,9 @@ const ForecastPlot = ({ forecast, isMetric }) => {
         }
     }, [forecast, isMetric, windowWidth])
 
-    useEffect(() => {
-        const handleResize = () => setWindowWidth(window.innerWidth);
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
     function plot(data) {
 
         d3.select(".d3plot").remove();
-
-        // data.pop();
 
         const margin = {
             top: 20,
@@ -141,6 +132,7 @@ const ForecastPlot = ({ forecast, isMetric }) => {
 
         svg.append("path")
             .datum(data)
+            .transition()
             .attr("class", "line")
             .attr("d", lineGenerator);
 
