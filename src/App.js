@@ -19,7 +19,7 @@ function App() {
   const [dayOrNight, setDayOrNight] = useState("");
   const [isMetric, setIsMetric] = useState(false);
   const [location, setLocation] = useState("Denver");
-  const [geolocation, setGeolocation] = useState("39.7392,-104.9903")
+  const [geolocation, setGeolocation] = useState({lat: "39.7392", long: "-104.9903"})
 
   useEffect(() => {
     API.getWeather(geolocation)
@@ -39,12 +39,12 @@ function App() {
       })
   }, [geolocation]);
 
-  useEffect(() => {
-    API.getGeocode(location)
-      .then(res => {
-        console.log(res)
-      })
-  })
+  // useEffect(() => {
+  //   API.getGeocode(location)
+  //     .then(res => {
+  //       setGeolocation(res.data.results[0].geometry.location);
+  //     })
+  // }, [location])
 
   function degToCardinal(windBearing) {
     const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
@@ -54,16 +54,22 @@ function App() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    // setGeolocation({lat: "41.8781", long:"87.6298"})
+    API.getGeocode(location)
+      .then(res => {
+        // console.log(res)
+        setGeolocation(res.data.results[0].geometry.location);
+      })
   }
 
   return (
     // <WeatherProvider>
     <div className="app"
-    // style={{
-    //   color: `${dayOrNight === "night" ? (
-    //     "whitesmoke") : ("black")
-    //     }`
-    // }}
+    style={{
+      color: `${dayOrNight === "night" ? (
+        "whitesmoke") : ("black")
+        }`
+    }}
     >
       <form
         className="enterLocation"
