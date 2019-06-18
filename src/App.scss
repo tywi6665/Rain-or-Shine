@@ -13,7 +13,7 @@ body {
     // position: relative;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 0.25fr 1fr 1fr 2fr 0.15fr;
+    grid-template-rows: 0.35fr 1fr 1fr 2fr 0.15fr;
     grid-template-areas: 
         "header header"
         ". details"
@@ -28,6 +28,31 @@ body {
     top: 25px;
     left: 15px;
     z-index: 5;
+
+    input[type=submit] {
+        visibility: hidden;
+    }
+
+    span { 
+        visibility: hidden;
+
+        .checkIcon {
+            position: fixed;
+            top: 32px;
+            left: 170px;
+            color: #385fa0;
+
+            svg {
+                width: 12px;
+                height: 12px;
+            }
+
+            &:hover {
+                cursor: pointer;
+                color: green;
+            }
+        }
+    }
 
     .searchIcon {
         position: fixed;
@@ -53,6 +78,19 @@ body {
             background-color: #e1f6ff;
             box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
         }
+
+        &::-webkit-search-cancel-button{
+            cursor: pointer;
+            // -webkit-appearance: none;
+            // content: "X";
+            // color: red;
+        }
+
+    }
+
+    input[type=search]:focus + span {
+        visibility: visible;
+        transition: all 0.5s;
     }
 }
 
@@ -124,7 +162,7 @@ body {
         position: absolute;
         width: 100%;
         height: 100%;
-        margin: 0;
+        margin: 5px 0 0 0;
         line-height: 30px;
         text-align: center;
         animation: scroll 30s linear infinite;

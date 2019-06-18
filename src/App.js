@@ -18,6 +18,7 @@ function App() {
   const [dailyWeather, setDailyWeather] = useState(null);
   const [dayOrNight, setDayOrNight] = useState("");
   const [isMetric, setIsMetric] = useState(false);
+  const [location, setLocation] = useState("Denver");
 
   useEffect(() => {
     API.getWeather()
@@ -43,18 +44,38 @@ function App() {
     return cardinalDirections[(value % 16)];
   };
 
+  function handleFormSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     // <WeatherProvider>
     <div className="app"
-      style={{
-        color: `${dayOrNight === "night" ? (
-          "whitesmoke") : ("black")
-          }`
-      }}
+    // style={{
+    //   color: `${dayOrNight === "night" ? (
+    //     "whitesmoke") : ("black")
+    //     }`
+    // }}
     >
-      <form className="enterLocation">
-        <Icon className="searchIcon" type="search"/>
-        <input type="search" placeholder="Denver"></input>
+      <form
+        className="enterLocation"
+        onSubmit={handleFormSubmit}
+      >
+        <Icon className="searchIcon" type="search" />
+        <input type="search"
+          placeholder={location}
+          value={location}
+          onChange={e => setLocation(e.target.value)}
+        >
+        </input>
+        {location ? (
+          <span>
+            <Icon className="checkIcon" type="check-circle" />
+            <input type="submit" />
+          </span>
+        ) : (
+            ""
+          )}
       </form>
       <div className="unitToggle">
         <input type="checkbox" id="switch"
