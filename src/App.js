@@ -5,7 +5,7 @@ import WeatherIcon from "./components/WeatherIcon";
 import WeatherDetail from "./components/WeatherDetail";
 import Tilt from "./components/Tilt";
 import ForecastPlot from "./components/ForecastPlot";
-import { Icon, Modal } from 'antd';
+import { Icon } from 'antd';
 import API from "./utils/API";
 import './App.scss';
 // import { WeatherProvider } from './context/weatherContext';
@@ -52,6 +52,10 @@ function App() {
           }`
       }}
     >
+      <form className="enterLocation">
+        <Icon className="searchIcon" type="search"/>
+        <input type="search" placeholder="Denver"></input>
+      </form>
       <div className="unitToggle">
         <input type="checkbox" id="switch"
           onChange={() => { isMetric ? setIsMetric(false) : setIsMetric(true) }}

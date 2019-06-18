@@ -23,6 +23,39 @@ body {
     overflow: hidden;
 }
 
+.enterLocation {
+    position: fixed;
+    top: 25px;
+    left: 15px;
+    z-index: 5;
+
+    .searchIcon {
+        position: fixed;
+        top: 34px;
+        left: 27px;
+    }
+
+    input[type=search] {
+        -webkit-appearance: textfield;
+	    -webkit-box-sizing: content-box;
+	    font-family: inherit;
+	    font-size: 80%;
+        outline: none;
+        background: lightgrey no-repeat 9px center;
+        width: 55px;
+        padding: 9px 10px 9px 32px;
+        border: solid 0.5px rgba(0, 0, 0, 0.5);
+        border-radius: 100px;
+        transition: all 0.5s;
+
+        &:focus {
+            width: 150px;
+            background-color: #e1f6ff;
+            box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+        }
+    }
+}
+
 .unitToggle {
     position: fixed;
     top: 5px;
@@ -123,7 +156,7 @@ body {
 
     .innerTilt {
         position: absolute;
-        top: 15%;
+        top: 5%;
         will-change: transform;
         transform-style: preserve-3d;
         transform-origin: center center;
