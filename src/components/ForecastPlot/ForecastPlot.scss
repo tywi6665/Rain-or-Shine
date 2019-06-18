@@ -50,3 +50,9 @@ div.toolTip {
     text-align: center;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .x text {
+    transform: translate(-5px, 12px) rotate(-45deg);
+  }
+}

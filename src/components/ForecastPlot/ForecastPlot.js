@@ -53,7 +53,7 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
             left: 60
         },
             width = (windowWidth / 1.15) - margin.left - margin.right,
-            height = 550 - margin.top - margin.bottom;
+            height = 555 - margin.top - margin.bottom;
 
         const parseDate = d3.timeParse("%s")
 
@@ -100,7 +100,8 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
             .call(xAxis.tickFormat(d3.timeFormat("%A")))
 
         svg.append("text")
-            .attr("transform", `translate(${width / 2}, ${((height - 25) + margin.top + 20)})`)
+            .attr("class", "plotText")
+            .attr("transform", `translate(${width / 2}, ${((height - 25) + margin.top + 30)})`)
             .style("text-anchor", "middle")
             .text("7 Day Forecast");
 
