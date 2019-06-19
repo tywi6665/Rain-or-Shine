@@ -98,7 +98,7 @@ function App() {
       <Container
         gridArea={"header"}
       >
-        <p style={{fontFamily: "Copperplate, Copperplate Gothic Light, fantasy"}}>Welcome to Rain or Shine!</p>
+        <p className="title">Welcome to Rain or Shine!</p>
         <div className="scrollingText">
           {dailyWeather ? (
             <p>{dailyWeather[0].summary}</p>
