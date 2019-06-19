@@ -3,7 +3,54 @@
     align-items: center;
     flex-wrap: wrap;
     position: relative;
-    padding: 10px 15px 10px 15px;
+
+    .thermometer {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        top: 28px;
+        left: 95px;
+        border-radius: 50%;
+        border: solid 0.5px gray;
+        background: #f34e54;
+        
+
+        &::after {
+            content: "";
+            position: absolute;
+            height: 35px;
+            width: 5px;
+            bottom: 0px;
+            left: 3.5px;
+            border-radius: 10px;
+            border: solid 0.5px gray;
+            background: linear-gradient(to top, red, #f34e54, gray);
+            z-index: -1;
+        }
+    }
+
+    .raindrop{
+        position: absolute;
+        width: 9px;
+        height: 9px;
+        top: 14px;
+        right: 95px;
+        border-radius: 1px;
+        background: blue;
+
+        &::after {
+            content: "";
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            top: 0px;
+            right: 0px;
+            border-radius: 50%;
+            background: blue;
+        }
+
+        transform: rotate(-45deg);
+    }
 
     .arrowIcon {
         position: absolute;
@@ -12,7 +59,7 @@
     }
 
     .uvScale {
-        height: 6px;
+        height: 5px;
         width: 100%;
         border-radius: 10px;
         background: linear-gradient(to right, green, yellow, red, purple);
@@ -20,7 +67,6 @@
 
     .UV {
         text-align: left;
-        width: 100%;
         background: linear-gradient(to right, green, yellow, red, purple);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

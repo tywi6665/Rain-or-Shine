@@ -119,7 +119,9 @@ function App() {
                   ((currentWeather.temperature - 32) * 5 / 9).toString().slice(0, 5)
                 ) : (
                     currentWeather.temperature)}
-              />
+              >
+                <div className="thermometer"></div>
+              </WeatherDetail>
               <WeatherDetail
                 weatherCondition={"Humidity"}
                 weatherInfo={currentWeather.humidity}
@@ -127,7 +129,9 @@ function App() {
               <WeatherDetail
                 weatherCondition={"Chance of Precipitation"}
                 weatherInfo={`${dailyWeather[0].precipProbability}%`}
-              />
+              >
+                <div className="raindrop"></div>
+              </WeatherDetail>
               <span></span>
               <WeatherIcon
                 icon={currentWeather.icon}
@@ -148,10 +152,10 @@ function App() {
                 weatherCondition={"Wind Direction"}
                 weatherInfo={degToCardinal(currentWeather.windBearing)}
               >
-                <Icon 
+                <Icon
                   className="arrowIcon"
                   type="arrow-up"
-                  style={{transform: `rotate(${currentWeather.windBearing}deg)`, fontSize: "20px"}}
+                  style={{ transform: `rotate(${currentWeather.windBearing}deg)`, fontSize: "20px" }}
                 />
               </WeatherDetail>
               <WeatherDetail
@@ -184,7 +188,7 @@ function App() {
       >
         <p>Powered by Dark Sky</p>
         <p>Made by tywi6665</p>
-        <a href="https://github.com/tywi6665" 
+        <a href="https://github.com/tywi6665"
           target="_blank"
           rel="noopener noreferrer"
         >

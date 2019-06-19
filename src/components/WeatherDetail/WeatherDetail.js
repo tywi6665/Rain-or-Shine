@@ -5,13 +5,18 @@ const WeatherDetail = ({ children, weatherInfo, weatherCondition, translate }) =
     return (
         <div className="weatherDetail">
             {translate ? (
-                    <p
-                        className={weatherCondition}
-                        style={{
-                            textIndent: `${(weatherInfo * 10) - 10}%`
-                        }}
-                    >
-                        {weatherInfo}</p>
+                <p
+                    className={weatherCondition}
+                    style={{
+                        textIndent: `${weatherInfo === 0 ? (
+                            `0`
+                        ) : (
+                                `${(weatherInfo * 10) - 10}%`
+                            )
+                        }`
+                    }}
+                >
+                    {weatherInfo}</p>
             ) : (
                     <p
                         className={weatherCondition}
