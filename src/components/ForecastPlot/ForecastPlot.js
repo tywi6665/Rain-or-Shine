@@ -96,7 +96,7 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
         svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", `translate(0, ${height - 25})`)
+            .attr("transform", `translate(0, ${height - 20})`)
             .call(xAxis.tickFormat(d3.timeFormat("%A")))
 
         svg.append("text")

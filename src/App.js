@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Background from './components/Background/Background';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
@@ -54,10 +54,8 @@ function App() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    // setGeolocation({lat: "41.8781", lng:"87.6298"})
     API.getGeocode(location)
       .then(res => {
-        // console.log(res)
         setGeolocation(res.data.results[0].geometry.location);
       })
   }
@@ -66,7 +64,7 @@ function App() {
     // <WeatherProvider>
     <div className="app"
       style={{
-        color: `${dayOrNight === "night" ? (
+        fontColor: `${dayOrNight === "night" ? (
           "whitesmoke") : ("black")
           }`
       }}
@@ -82,14 +80,6 @@ function App() {
           onChange={e => setLocation(e.target.value)}
         >
         </input>
-        {location ? (
-          <span>
-            <Icon className="checkIcon" type="check-circle" />
-            <input type="submit" />
-          </span>
-        ) : (
-            ""
-          )}
       </form>
       <div className="unitToggle">
         <input type="checkbox" id="switch"
@@ -136,7 +126,7 @@ function App() {
               />
               <WeatherDetail
                 weatherCondition={"Chance of Precipitation"}
-                weatherInfo={`${currentWeather.precipProbability}%`}
+                weatherInfo={`${dailyWeather[0].precipProbability}%`}
               />
               <span></span>
               <WeatherIcon
