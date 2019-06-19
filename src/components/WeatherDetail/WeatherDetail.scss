@@ -3,6 +3,7 @@
     align-items: center;
     flex-wrap: wrap;
     position: relative;
+    padding: 10px 15px 10px 15px;
 
     .arrowIcon {
         position: absolute;
@@ -19,6 +20,10 @@
 
     .UV {
         text-align: left;
+        width: 100%;
+        background: linear-gradient(to right, green, yellow, red, purple);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     @media only screen and (min-width: 1340px) {
@@ -27,5 +32,4 @@
         }
     }
 }
-
 

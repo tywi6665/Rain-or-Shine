@@ -4,20 +4,24 @@ import "./WeatherDetail.scss";
 const WeatherDetail = ({ children, weatherInfo, weatherCondition, translate }) => {
     return (
         <div className="weatherDetail">
-            <p 
-                className={weatherCondition}
-                style={{
-                    transform: `${(translate) ? (
-                    `translateX(${(weatherInfo * 10) - 5}%)`) : (
-                        ""
-                    )}`
-                }}
-            >
-            {weatherInfo}</p>
+            {translate ? (
+                    <p
+                        className={weatherCondition}
+                        style={{
+                            textIndent: `${(weatherInfo * 10) - 10}%`
+                        }}
+                    >
+                        {weatherInfo}</p>
+            ) : (
+                    <p
+                        className={weatherCondition}
+                    >
+                        {weatherInfo}</p>
+                )}
+
             {children}
             <p>{weatherCondition}</p>
-            
-        </div>
+        </div >
     )
 };
 
