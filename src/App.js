@@ -124,11 +124,11 @@ function App() {
               </WeatherDetail>
               <WeatherDetail
                 weatherCondition={"Humidity"}
-                weatherInfo={currentWeather.humidity}
+                weatherInfo={`${currentWeather.humidity * 100}%`}
               />
               <WeatherDetail
                 weatherCondition={"Chance of Precipitation"}
-                weatherInfo={`${dailyWeather[0].precipProbability}%`}
+                weatherInfo={`${dailyWeather[0].precipProbability * 100}%`}
               >
                 <div className="raindrop"></div>
               </WeatherDetail>
