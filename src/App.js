@@ -156,8 +156,11 @@ function App() {
               </WeatherDetail>
               <WeatherDetail
                 weatherCondition={"UV Index"}
+                translate={true}
                 weatherInfo={currentWeather.uvIndex}
-              />
+              >
+                <div className="uvScale"></div>
+              </WeatherDetail>
             </Container>
           </Tilt>
         </>

@@ -10,6 +10,17 @@
         left: 95px;
     }
 
+    .uvScale {
+        height: 6px;
+        width: 100%;
+        border-radius: 10px;
+        background: linear-gradient(to right, green, yellow, red, purple);
+    }
+
+    .UV {
+        text-align: left;
+    }
+
     @media only screen and (min-width: 1340px) {
         .arrowIcon {
             top: 10px;
