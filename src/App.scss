@@ -135,6 +135,7 @@ body {
     
     .scrollingText {
     height: 30px;
+    margin-top: 30px;
     position: relative;
     z-index: -1;
 
@@ -233,7 +234,7 @@ body {
 
 .footer {
     grid-area: footer;
-    background: darkgrey;
+    background: #81cdff;
     margin-top: 45px;
     padding-bottom: 10px;
     font-family: Copperplate, Copperplate Gothic Light, fantasy;

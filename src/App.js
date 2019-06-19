@@ -34,7 +34,7 @@ function App() {
         let currently = res.data.currently;
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
-        currently.windBearing = degToCardinal(currently.windBearing)
+        // currently.windBearing = degToCardinal(currently.windBearing)
         setDailyWeather(daily);
         setCurrentWeather(currently);
         let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
@@ -146,8 +146,14 @@ function App() {
               />
               <WeatherDetail
                 weatherCondition={"Wind Direction"}
-                weatherInfo={currentWeather.windBearing}
-              />
+                weatherInfo={degToCardinal(currentWeather.windBearing)}
+              >
+                <Icon 
+                  className="arrowIcon"
+                  type="arrow-up"
+                  style={{transform: `rotate(${currentWeather.windBearing}deg)`, fontSize: "20px"}}
+                />
+              </WeatherDetail>
               <WeatherDetail
                 weatherCondition={"UV Index"}
                 weatherInfo={currentWeather.uvIndex}

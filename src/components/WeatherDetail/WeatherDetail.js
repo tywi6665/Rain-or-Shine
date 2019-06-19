@@ -1,11 +1,13 @@
 import React from "react";
 import "./WeatherDetail.scss";
 
-const WeatherDetail = (props) => {
+const WeatherDetail = ({ children, weatherInfo, weatherCondition }) => {
     return (
         <div className="weatherDetail">
-            <p>{props.weatherInfo}</p>
-            <p>{props.weatherCondition}</p>
+            <p>{weatherInfo}</p>
+            {children}
+            <p>{weatherCondition}</p>
+            
         </div>
     )
 };

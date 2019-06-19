@@ -107,7 +107,7 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
         svg.append("g")
             .attr("class", "y axis")
-            .call(yAxis);
+            .call(yAxis)
 
         svg.append("text")
             .attr("transform", "rotate(-90)")
@@ -133,7 +133,6 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
         svg.append("path")
             .datum(data)
-            .transition()
             .attr("class", "line")
             .attr("d", lineGenerator);
 

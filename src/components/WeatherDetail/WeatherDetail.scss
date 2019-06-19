@@ -2,4 +2,19 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    position: relative;
+
+    .arrowIcon {
+        position: absolute;
+        top: 15px;
+        left: 95px;
+    }
+
+    @media only screen and (min-width: 1340px) {
+        .arrowIcon {
+            top: 10px;
+        }
+    }
 }
+
+
