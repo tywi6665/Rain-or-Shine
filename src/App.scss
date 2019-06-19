@@ -26,35 +26,36 @@ body {
 
 .enterLocation {
     position: fixed;
-    top: 25px;
+    top: 12px;
     left: 15px;
     z-index: 5;
 
-    span { 
-        visibility: hidden;
+    // span { 
+    //     visibility: hidden;
 
-        .checkIcon {
-            position: fixed;
-            top: 32px;
-            left: 170px;
-            color: #385fa0;
+    //     .checkIcon {
+    //         position: fixed;
+    //         top: 32px;
+    //         left: 170px;
+    //         color: #385fa0;
 
-            svg {
-                width: 12px;
-                height: 12px;
-            }
+    //         svg {
+    //             width: 12px;
+    //             height: 12px;
+    //         }
 
-            &:hover {
-                cursor: pointer;
-                color: green;
-            }
-        }
-    }
+    //         &:hover {
+    //             cursor: pointer;
+    //             color: green;
+    //         }
+    //     }
+    // }
 
     .searchIcon {
         position: fixed;
-        top: 34px;
+        top: 22px;
         left: 27px;
+        color: black;
     }
 
     input[type=search] {
@@ -93,7 +94,7 @@ body {
 
 .unitToggle {
     position: fixed;
-    top: 5px;
+    top: -5px;
     right: 15px;
     z-index: 5;
 
@@ -152,25 +153,58 @@ body {
 
 .scrollingText {
     height: 30px;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
+    z-index: -1;
 
     p {
         position: absolute;
-        width: 100%;
+        right: 0;
+        width: fit-content;
         height: 100%;
-        margin: 5px 0 0 0;
+        margin: 0;
+        padding: 0 8px 0 8px;
         line-height: 30px;
         text-align: center;
+        background: white;
+        border-radius: 50px;
         animation: scroll 30s linear infinite;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 25px;
+            bottom: 8px;
+            height: 70px;
+            width: 70px;
+            background: white;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            right: 75px;
+            bottom: 0px;
+            height: 55px;
+            width: 100px;
+            background: white;
+            border-radius: 50%;
+            z-index: -1;
+        }
     }
+
+
 
     @keyframes scroll { 
         from {
-            transform: translateX(100%)
+            right: -25%;
+            // transform: translateX(100%)
         }
         to {
-            transform: translateX(-100%)
+            // transform: translateX(-100%)
+            right: 100%;
         }
     }
 }

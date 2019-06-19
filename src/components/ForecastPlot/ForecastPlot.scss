@@ -3,11 +3,17 @@
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+  
 }
 
 .y path {
   stroke: url(#temp-gradient);
   stroke-width: 1.5px;
+}
+
+.x text, 
+.y text {
+  color: black;
 }
 
 .line {

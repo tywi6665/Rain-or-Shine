@@ -23,7 +23,7 @@ const Tilt = ({ children }) => {
                 setTranistionTime(0);
             }, transitionTime);
         },
-        []
+        [transitionTime]
     );
 
     const onMouseMove = useCallback(

@@ -64,7 +64,7 @@ function App() {
     // <WeatherProvider>
     <div className="app"
       style={{
-        fontColor: `${dayOrNight === "night" ? (
+        color: `${dayOrNight === "night" ? (
           "whitesmoke") : ("black")
           }`
       }}
@@ -98,7 +98,7 @@ function App() {
       <Container
         gridArea={"header"}
       >
-        <p>Welcome to Rain or Shine!</p>
+        <p style={{fontFamily: "Copperplate, Copperplate Gothic Light, fantasy"}}>Welcome to Rain or Shine!</p>
         <div className="scrollingText">
           {dailyWeather ? (
             <p>{dailyWeather[0].summary}</p>
@@ -175,7 +175,10 @@ function App() {
       >
         <p>Powered by Dark Sky</p>
         <p>Made by tywi6665</p>
-        <a href="https://github.com/tywi6665" target="_blank">
+        <a href="https://github.com/tywi6665" 
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Icon type="github" />
         </a>
       </Container>
