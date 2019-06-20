@@ -124,7 +124,7 @@ function App() {
               </WeatherDetail>
               <WeatherDetail
                 weatherCondition={"Humidity"}
-                weatherInfo={`${currentWeather.humidity * 100}%`}
+                weatherInfo={`${Math.ceil(currentWeather.humidity * 100)}%`}
               />
               <WeatherDetail
                 weatherCondition={"Chance of Precipitation"}

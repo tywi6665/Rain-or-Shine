@@ -42,9 +42,14 @@ div.toolTip {
   background: lightsteelblue;		
   border-radius: 8px;			
   pointer-events: none;	
-  border: 1px solid;
+  border: 1px solid black;
+
+  strong {
+    color: black;
+  }
   
   p {
+    color: black;
     margin: 0;
   }
 
