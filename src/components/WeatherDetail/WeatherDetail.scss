@@ -33,10 +33,10 @@
         position: absolute;
         width: 9px;
         height: 9px;
-        top: 14px;
-        right: 85px;
+        top: 12px;
+        right: 80px;
         border-radius: 1px;
-        background: blue;
+        background: rgb(12, 94, 218);
 
         &::after {
             content: "";
@@ -46,7 +46,7 @@
             top: 0px;
             right: 0px;
             border-radius: 50%;
-            background: blue;
+            background: rgb(12, 94, 218);
         }
 
         transform: rotate(-45deg);
@@ -75,6 +75,12 @@
     @media only screen and (min-width: 1340px) {
         .arrowIcon {
             top: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 550px) {
+        .arrowIcon {
+            left: 29px;
         }
     }
 }
