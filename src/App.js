@@ -8,11 +8,8 @@ import ForecastPlot from "./components/ForecastPlot";
 import { Icon } from 'antd';
 import API from "./utils/API";
 import './App.scss';
-// import { WeatherProvider } from './context/weatherContext';
 
 function App() {
-
-  // const [weather, setWeather] = useContext(WeatherContext)
 
   const [currentWeather, setCurrentWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState(null);
@@ -34,7 +31,6 @@ function App() {
         let currently = res.data.currently;
         let daily = res.data.daily.data;
         currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
-        // currently.windBearing = degToCardinal(currently.windBearing)
         setDailyWeather(daily);
         setCurrentWeather(currently);
         let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
@@ -61,7 +57,6 @@ function App() {
   }
 
   return (
-    // <WeatherProvider>
     <div className="app"
       style={{
         color: `${dayOrNight === "night" ? (
@@ -196,7 +191,6 @@ function App() {
         </a>
       </Container>
     </div>
-    // </WeatherProvider>
   );
 }
 

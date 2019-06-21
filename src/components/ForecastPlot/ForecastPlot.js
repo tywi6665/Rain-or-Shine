@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import * as d3 from "d3";
 import "./ForecastPlot.scss";
 import "weather-underground-icons";
-// import { WeatherContext } from "../../context/weatherContext";
 
 const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
-    // const [weather, setWeather] = useContext(WeatherContext)
     const [forecastData, setForecastData] = useState(null)
 
     useEffect(() => {

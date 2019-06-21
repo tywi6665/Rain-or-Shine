@@ -10,9 +10,6 @@ const Tilt = ({ children }) => {
     const leaveTransitionTime = 250;
     const maxRotation = 0.2;
     const maxScale = 1;
-    // const maxShadowDisplacement = 0.1;
-    // const shadowRadius = "20px";
-    // const shadowColor = "rgba(244, 167, 29, 0.9)";
     const perspective = "10000px";
     const easing = "ease-in-out";
 
@@ -58,18 +55,6 @@ const Tilt = ({ children }) => {
             <div
                 className="innerTilt"
                 style={{
-                    // filter: (
-                    //     hover ? (
-                    //         `drop-shadow(
-                    //             ${position.x * maxShadowDisplacement}px
-                    //             ${position.y * maxShadowDisplacement}px
-                    //             ${shadowRadius}
-                    //             ${shadowColor}
-                    //         )`
-                    //     ) : (
-                    //             ""
-                    //         )
-                    // ),
                     transform: `
                         perspective(${perspective})
                         rotateX(${maxRotation * position.y}deg)
