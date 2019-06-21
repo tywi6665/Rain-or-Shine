@@ -51,9 +51,16 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
             right: 60,
             bottom: 30,
             left: 60
-        },
-            width = (windowWidth / 1.15) - margin.left - margin.right,
-            height = 555 - margin.top - margin.bottom;
+        }
+
+        let width;
+
+        if (windowWidth < 550) {
+            width = (windowWidth / 1.07) - margin.left - margin.right
+        } else {
+            width = (windowWidth / 1.15) - margin.left - margin.right
+        };
+        const height = 555 - margin.top - margin.bottom;
 
         const parseDate = d3.timeParse("%s")
 
@@ -101,7 +108,7 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
         svg.append("text")
             .attr("class", "plotText")
-            .attr("transform", `translate(${width / 2}, ${((height - 25) + margin.top + 30)})`)
+            .attr("transform", `translate(${width / 2}, 0)`)
             .style("text-anchor", "middle")
             .text("7 Day Forecast");
 
