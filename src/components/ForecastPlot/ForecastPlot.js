@@ -48,9 +48,9 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
         const margin = {
             top: 20,
-            right: 60,
+            right: 20,
             bottom: 30,
-            left: 60
+            left: 50
         }
 
         let width;
@@ -108,7 +108,7 @@ const ForecastPlot = ({ forecast, windowWidth, isMetric }) => {
 
         svg.append("text")
             .attr("class", "plotText")
-            .attr("transform", `translate(${width / 2}, 0)`)
+            .attr("transform", `translate(${(width / 2) - 20}, 0)`)
             .style("text-anchor", "middle")
             .text("7 Day Forecast");
 

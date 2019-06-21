@@ -269,6 +269,7 @@ body {
 @media only screen and (max-width: 900px) {
     .app {
         grid-template-columns: 100%;
+        // grid-template-rows: 0.85fr 1fr 1fr 2fr 0.15fr auto;
         grid-template-areas: 
             "header"
             "details"
@@ -280,6 +281,16 @@ body {
             margin-right: 0;
             margin: 0 auto;
         }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .app {
+        grid-template-rows: 0.70fr 1fr 0.6fr 2fr 0.15fr auto;
+    }
+
+    .header {
+        margin-top: 50px
     }
 }
 
