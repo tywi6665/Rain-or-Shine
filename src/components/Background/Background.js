@@ -2,25 +2,83 @@ import React from 'react';
 import "./Background.scss";
 
 const Background = ({ dayOrNight, currentWeather }) => {
-    console.log(currentWeather);
+    
     return (
         <div className={`backgroundImage ${dayOrNight} ${currentWeather}-background`}>
-            {currentWeather === "cloudy" || currentWeather === "rain" ? (
-                <>
+            {currentWeather === "cloudy" || currentWeather === "rain" || currentWeather === "snow" ? [
+                (<>
                     <div
-                        className={`sky ${currentWeather}`}
+                        className="sky"
                         style={{ background: "linear-gradient(to bottom, darkgrey, #ffffff)" }}
                     ></div>
                     <div className="shelf-cloud">
                         <div className="shelf-cloud-left"></div>
                         <div className="shelf-cloud-right"></div>
                     </div>
-                </>
-            ) : [
-                    <div
+                </>),
+                (currentWeather === "rain" ? (
+                    //Map through rain divs
+                    <div className={`${currentWeather}ing`}>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                        <i className={currentWeather}></i>
+                    </div>
+                ) : (
+                        null
+                    ))
+            ] : [
+                    (<div
                         className="sky"
                         style={{ background: "linear-gradient(to bottom, #845EC2, #D65DB1, #FF6F91, #FF9671, #FFC75F, #F9F871)" }}
-                    ></div>,
+                    >
+                    </div>),
                     (dayOrNight === "night" ? (
                         <>
                             <div className="stars">
@@ -35,7 +93,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                             </div>
                         </>
                     ) : (
-                            currentWeather === "cloudy" || currentWeather === "rain" ? (
+                            currentWeather === "cloudy" || currentWeather === {currentWeather} ? (
                                 null
                             ) : (
                                     <div className="sun">
@@ -74,7 +132,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                     </div>
                 </>
             ) : (
-                    currentWeather === "cloudy" || currentWeather === "rain" ? (
+                    currentWeather === "cloudy" || currentWeather === {currentWeather} ? (
                         null
                     ) : (
                             <div className="sun">
