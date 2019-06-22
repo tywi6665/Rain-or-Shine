@@ -9,6 +9,23 @@
 .day {
     background: linear-gradient(to bottom, #81cdff, #b9ecff, #ffffff);
     animation: fade_in 2s;
+
+    .sky {
+        background: linear-gradient(to bottom, #1a2a6c, #b21f1f, orange, #fdbb2d);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        z-index: 10;
+        animation: fade_out 5s forwards linear;
+    }
+}
+
+@keyframes fade_out {
+    0% {opacity: 1; z-index: 10;}
+    100% {opacity: 0; z-index: -10;}
 }
 
 .night {
@@ -19,7 +36,6 @@
 .sun, .moon {
     position: absolute;
     left: 25%;
-    // top: 40%;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -332,7 +348,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    animation: fade_in 5s;
+    animation: fade_in 4s;
     
     .large-mountain-farleft {
         position: absolute;
@@ -564,6 +580,3 @@
         }
     }
 }
-
-// #AF7B53
-// #AB936D
