@@ -8,10 +8,10 @@
 
 .day {
     background: linear-gradient(to bottom, #81cdff, #b9ecff, #ffffff);
-    animation: fade_in 2s;
+    animation: fade_in 5s;
 
     .sky {
-        background: linear-gradient(to bottom, #1a2a6c, #b21f1f, orange, #fdbb2d);
+        background: linear-gradient(to bottom, #845EC2, #D65DB1, #FF6F91, #FF9671, #FFC75F, #F9F871);
         position: absolute;
         top: 0;
         left: 0;
@@ -348,7 +348,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    animation: fade_in 4s;
+    animation: fade_in 5s;
     
     .large-mountain-farleft {
         position: absolute;
@@ -357,7 +357,6 @@
         width: 20%;
         height: 75%;
         background: #044946;
-        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         z-index: 3;
     
