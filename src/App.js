@@ -85,6 +85,7 @@ function App() {
       {dayOrNight ? (
         <Background
           dayOrNight={dayOrNight}
+          currentWeather={"cloudy"}
         />
       ) : (
           ""

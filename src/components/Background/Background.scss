@@ -9,23 +9,93 @@
 .day {
     background: linear-gradient(to bottom, #81cdff, #b9ecff, #ffffff);
     animation: fade_in 5s;
+}
 
-    .sky {
-        background: linear-gradient(to bottom, #845EC2, #D65DB1, #FF6F91, #FF9671, #FFC75F, #F9F871);
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        opacity: 1;
-        z-index: 10;
-        animation: fade_out 5s forwards linear;
-    }
+.cloudy-background, .rain-background {
+    background: linear-gradient(to bottom, darkgrey, #ffffff);
+}
+
+.sky {
+    background: linear-gradient(to bottom, #845EC2, #D65DB1, #FF6F91, #FF9671, #FFC75F, #F9F871);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    z-index: 10;
+    animation: fade_out 5s forwards linear;
 }
 
 @keyframes fade_out {
     0% {opacity: 1; z-index: 10;}
     100% {opacity: 0; z-index: -10;}
+}
+
+.shelf-cloud-left {
+    position: absolute;
+    top: 0;
+    left: -80px;
+    height: 110px;
+    width: 80%;
+    border-radius: 50%;
+    background: linear-gradient(to top, grey, #DCDCDC);
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 0;
+        height: 50px;
+        width: 50%;
+        border-radius: 50%;
+        background: linear-gradient(to top, grey, #DCDCDC);
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 70px;
+        left: 255px;
+        height: 25px;
+        width: 25%;
+        border-radius: 50%;
+        background: linear-gradient(to top, grey, #DCDCDC);
+        z-index: 2;
+    }
+}
+
+.shelf-cloud-right {
+    position: absolute;
+    top: 0;
+    right: -40px;
+    height: 125px;
+    width: 80%;
+    border-radius: 50%;
+    background: linear-gradient(to top, grey, #DCDCDC);
+    z-index: -1;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        right: 26px;
+        height: 30px;
+        width: 70%;
+        border-radius: 50%;
+        background: linear-gradient(to top, grey, #DCDCDC);
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 92px;
+        right: 22px;
+        height: 35px;
+        width: 25%;
+        border-radius: 50%;
+        background: linear-gradient(to top, grey, #DCDCDC);
+    }
 }
 
 .night {
@@ -250,7 +320,6 @@
     height: 50%;
     margin: 0;
     z-index: 5;
-    // overflow: hidden;
     animation: fade_in 4s;
 
     .cloud {
@@ -348,7 +417,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    animation: fade_in 5s;
+    animation: fade_in 10s;
     
     .large-mountain-farleft {
         position: absolute;
