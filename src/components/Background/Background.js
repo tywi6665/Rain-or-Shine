@@ -11,8 +11,10 @@ const Background = ({ dayOrNight, currentWeather }) => {
                         className={`sky ${currentWeather}`}
                         style={{ background: "linear-gradient(to bottom, darkgrey, #ffffff)" }}
                     ></div>
-                    <div className="shelf-cloud-left"></div>
-                    <div className="shelf-cloud-right"></div>
+                    <div className="shelf-cloud">
+                        <div className="shelf-cloud-left"></div>
+                        <div className="shelf-cloud-right"></div>
+                    </div>
                 </>
             ) : [
                     <div

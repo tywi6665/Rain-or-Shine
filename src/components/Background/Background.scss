@@ -32,69 +32,76 @@
     100% {opacity: 0; z-index: -10;}
 }
 
-.shelf-cloud-left {
-    position: absolute;
-    top: 0;
-    left: -80px;
-    height: 110px;
-    width: 80%;
-    border-radius: 50%;
-    background: linear-gradient(to top, grey, #DCDCDC);
+.shelf-cloud {
+    position: relative;
+    width: 100%;
+    height: 40%;
+    overflow: hidden;
 
-    &:before {
-        content: "";
+    .shelf-cloud-left {
         position: absolute;
-        top: -15px;
-        left: 0;
-        height: 50px;
-        width: 50%;
+        top: 0;
+        left: -80px;
+        height: 110px;
+        width: 80%;
         border-radius: 50%;
         background: linear-gradient(to top, grey, #DCDCDC);
+    
+        &:before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            height: 50px;
+            width: 50%;
+            border-radius: 50%;
+            background: linear-gradient(to top, grey, #DCDCDC);
+        }
+    
+        &:after {
+            content: "";
+            position: absolute;
+            top: 70px;
+            left: 255px;
+            height: 25px;
+            width: 25%;
+            border-radius: 50%;
+            background: linear-gradient(to top, grey, #DCDCDC);
+            z-index: 2;
+        }
     }
-
-    &:after {
-        content: "";
+    
+    .shelf-cloud-right {
         position: absolute;
-        top: 70px;
-        left: 255px;
-        height: 25px;
-        width: 25%;
+        top: 0;
+        right: -40px;
+        height: 125px;
+        width: 80%;
         border-radius: 50%;
         background: linear-gradient(to top, grey, #DCDCDC);
-        z-index: 2;
-    }
-}
-
-.shelf-cloud-right {
-    position: absolute;
-    top: 0;
-    right: -40px;
-    height: 125px;
-    width: 80%;
-    border-radius: 50%;
-    background: linear-gradient(to top, grey, #DCDCDC);
-    z-index: -1;
-
-    &:before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        right: 26px;
-        height: 30px;
-        width: 70%;
-        border-radius: 50%;
-        background: linear-gradient(to top, grey, #DCDCDC);
-    }
-
-    &:after {
-        content: "";
-        position: absolute;
-        top: 92px;
-        right: 22px;
-        height: 35px;
-        width: 25%;
-        border-radius: 50%;
-        background: linear-gradient(to top, grey, #DCDCDC);
+        z-index: -1;
+    
+        &:before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            right: 26px;
+            height: 30px;
+            width: 70%;
+            border-radius: 50%;
+            background: linear-gradient(to top, grey, #DCDCDC);
+        }
+    
+        &:after {
+            content: "";
+            position: absolute;
+            top: 92px;
+            right: 22px;
+            height: 35px;
+            width: 25%;
+            border-radius: 50%;
+            background: linear-gradient(to top, grey, #DCDCDC);
+        }
     }
 }
 
