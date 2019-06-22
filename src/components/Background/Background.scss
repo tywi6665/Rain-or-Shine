@@ -46,7 +46,8 @@
         width: 80%;
         border-radius: 50%;
         background: linear-gradient(to top, grey, #DCDCDC);
-    
+        animation: shelf_cloud_drift_left 5s forwards linear;
+
         &:before {
             content: "";
             position: absolute;
@@ -80,6 +81,7 @@
         border-radius: 50%;
         background: linear-gradient(to top, grey, #DCDCDC);
         z-index: -1;
+        animation: shelf_cloud_drift_right 8s forwards linear;
     
         &:before {
             content: "";
@@ -103,6 +105,16 @@
             background: linear-gradient(to top, grey, #DCDCDC);
         }
     }
+}
+
+@keyframes shelf_cloud_drift_left {
+    from {transform: translateX(-100%)}
+    to {transform: translateX(0)}
+}
+
+@keyframes shelf_cloud_drift_right {
+    from {transform: translateX(100%)}
+    to {transform: translateX(0)}
 }
 
 .night {
