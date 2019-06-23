@@ -11,8 +11,8 @@
     animation: fade_in 5s;
 }
 
-.cloudy-background, .rain-background, .fog-background {
-    background: linear-gradient(to bottom, darkgrey, #ffffff);
+.cloudy-background, .rain-background, .fog-background, .snow-background {
+    background: linear-gradient(to bottom, grey, lightgrey);
 }
 
 .sky {
@@ -45,6 +45,7 @@
         height: 110px;
         width: 80%;
         border-radius: 50%;
+        box-shadow: 0 0 10px 5px grey;
         background: linear-gradient(to top, grey, #DCDCDC);
         animation: shelf_cloud_drift_left 5s forwards linear;
 
@@ -79,6 +80,7 @@
         height: 125px;
         width: 80%;
         border-radius: 50%;
+        box-shadow: 0 0 10px 5px grey;
         background: linear-gradient(to top, grey, #DCDCDC);
         z-index: -1;
         animation: shelf_cloud_drift_right 8s forwards linear;
@@ -117,7 +119,7 @@
     to {transform: translateX(0)}
 }
 
-.raining {
+.raining, .snowing {
     position: absolute;
     top: 0;
     left: 0;
@@ -130,19 +132,27 @@
         position: absolute;
         width: 1.5px;
         height: 50px;
-        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, blue 100%);
+        background: linear-gradient(to bottom, rgba(255, 255, 255,0) 0%, blue 100%);
     }
 
-    $rain: 50;
+    .snow {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: white;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    $precip: 150;
     
-    @for $i from 1 through $rain {
+    @for $i from 1 through $precip {
         $top: (random(50) + 50) * 1%;
         $left: random(100) * 1%;
         $opacity: (random(30) + 30) * 0.01;
-        $delay: random(20) -1s;
+        $delay: random(20) - 1s;
 
-        .rain:nth-of-type(#{$i}) {
-            animation-name: rain-#{$i};
+        .rain:nth-of-type(#{$i}), .snow:nth-of-type(#{$i}) {
+            animation-name: rain_or_snow_#{$i};
             animation-delay: $delay;
             animation-duration: random(6) + 4s;
             animation-iteration-count: infinite;
@@ -151,14 +161,14 @@
             top: -$top;
         }
 
-        @keyframes rain-#{$i} {
+        @keyframes rain_or_snow_#{$i} {
             0% {
                 left: $left;
                 opacity: $opacity;
                 top: -$top;
             }
             100% {
-                opacity: 0;
+                // opacity: 0;
                 top: $top + 40%;
             }
         }
@@ -537,7 +547,6 @@
         width: 25.1%;
         height: 45%;
         background: #044946;
-        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         opacity: 0.9;
         z-index: 2;
@@ -583,7 +592,6 @@
         width: 25.1%;
         height: 40%;
         background: #044946;
-        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         opacity: 0.6;
         z-index: 1;
@@ -675,7 +683,6 @@
         width: 20%;
         height: 32%;
         background: #044946;
-        // background-image: linear-gradient(to top, transparent 0%, #AF7B53 100%);
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
         opacity: 0.7;
         z-index: 1;
@@ -713,5 +720,13 @@
             background: linear-gradient(to top, #38845e 0%, #AF7B53 75%);
             z-index: 4;
         }
+    }
+
+    .snow-cap-left::after {
+        background: linear-gradient(to top, #044946 0%, white 75%);
+    }
+
+    .snow-cap-right::after {
+        background: linear-gradient(to top, #38845e 0%, white 75%);
     }
 }

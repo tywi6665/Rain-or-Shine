@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Background.scss";
+import WeatherDetail from '../WeatherDetail';
 
 const Background = ({ dayOrNight, currentWeather }) => {
 
@@ -31,7 +32,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                         <div className="shelf-cloud-right"></div>
                     </div>
                 </>),
-                (currentWeather === "rain" ? (
+                (currentWeather === "rain" || currentWeather === "snow" ? (
                     rainOrSnow()
                 ) : (
                         null
@@ -56,7 +57,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                             </div>
                         </>
                     ) : (
-                            currentWeather === "cloudy" || currentWeather === { currentWeather } ? (
+                        currentWeather === "cloudy" || currentWeather === "rain" || currentWeather === "snow" || currentWeather === "fog" ? (
                                 null
                             ) : (
                                     <div className="sun">
@@ -85,16 +86,16 @@ const Background = ({ dayOrNight, currentWeather }) => {
                 <div className="cloud small-cloud cloud5"></div>
             </div>
             <div className="mountains">
-                <div className="large-mountain-farleft"></div>
-                <div className="large-mountain-farright"></div>
-                <div className="small-mountain-left"></div>
-                <div className="small-mountain-right"></div>
-                <div className="medium-mountain-left"></div>
-                <div className="medium-mountain-right"></div>
-                <div className="large-mountain-left"></div>
-                <div className="large-mountain-right"></div>
-                <div className="medium-mountain-farleft"></div>
-                <div className="medium-mountain-farright"></div>
+                <div className={`large-mountain-farleft ${currentWeather === "snow" ? "snow-cap-left" : ""}`}></div>
+                <div className={`large-mountain-farright ${currentWeather === "snow" ? "snow-cap-right" : ""}`}></div>
+                <div className={`small-mountain-left ${currentWeather === "snow" ? "snow-cap-left" : ""}`}></div>
+                <div className={`small-mountain-right ${currentWeather === "snow" ? "snow-cap-right" : ""}`}></div>
+                <div className={`medium-mountain-left ${currentWeather === "snow" ? "snow-cap-left" : ""}`}></div>
+                <div className={`medium-mountain-right ${currentWeather === "snow" ? "snow-cap-right" : ""}`}></div>
+                <div className={`large-mountain-left ${currentWeather === "snow" ? "snow-cap-left" : ""}`}></div>
+                <div className={`large-mountain-right ${currentWeather === "snow" ? "snow-cap-right" : ""}`}></div>
+                <div className={`medium-mountain-farleft ${currentWeather === "snow" ? "snow-cap-left" : ""}`}></div>
+                <div className={`medium-mountain-farright ${currentWeather === "snow" ? "snow-cap-right" : ""}`}></div>
             </div>
         </div>
     );
