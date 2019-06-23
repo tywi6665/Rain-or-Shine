@@ -11,7 +11,7 @@
     animation: fade_in 5s;
 }
 
-.cloudy-background, .rain-background {
+.cloudy-background, .rain-background, .fog-background {
     background: linear-gradient(to bottom, darkgrey, #ffffff);
 }
 
@@ -123,15 +123,14 @@
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     z-index: -2;
 
     .rain {
         position: absolute;
-        width: 1px;
+        width: 1.5px;
         height: 50px;
-        // background: white;
         background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, blue 100%);
-        // z-index: -5;
     }
 
     $rain: 50;
