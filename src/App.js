@@ -43,11 +43,11 @@ function App() {
       })
   }, [geolocation]);
 
-  const { position, error } = useGeolocation()
-  if (error) {
-    throw error
-  }
-  console.log({ lat: position.coords.latitude, lng: position.coords.longitude })
+  // const { position, error } = useGeolocation()
+  // if (error) {
+  //   throw error
+  // }
+  // console.log({ lat: position.coords.latitude, lng: position.coords.longitude })
 
 // useGeolocation((position, error) => {
   //   if (error) {
