@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useGeolocation } from "react-browser-hooks";
 import Background from './components/Background/Background';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
@@ -41,6 +42,20 @@ function App() {
         }
       })
   }, [geolocation]);
+
+  const { position, error } = useGeolocation()
+  if (error) {
+    throw error
+  }
+  console.log({ lat: position.coords.latitude, lng: position.coords.longitude })
+
+// useGeolocation((position, error) => {
+  //   if (error) {
+  //     return
+  //   }
+  //   setGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude })
+  //   console.log(position);
+  // }, [])
 
   function degToCardinal(windBearing) {
     const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
@@ -124,7 +139,7 @@ function App() {
               />
               <WeatherDetail
                 weatherCondition={"Chance of Precipitation"}
-                weatherInfo={`${dailyWeather[0].precipProbability * 100}%`}
+                weatherInfo={`${Math.ceil(dailyWeather[0].precipProbability * 100)}%`}
               >
                 <div className="raindrop"></div>
               </WeatherDetail>

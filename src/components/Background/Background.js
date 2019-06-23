@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Background.scss";
-import WeatherDetail from '../WeatherDetail';
 
 const Background = ({ dayOrNight, currentWeather }) => {
 
@@ -41,6 +40,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                     (<div
                         className="sky"
                         style={{ background: "linear-gradient(to bottom, #845EC2, #D65DB1, #FF6F91, #FF9671, #FFC75F, #F9F871)" }}
+                        key={"sky"}
                     >
                     </div>),
                     (dayOrNight === "night" ? (
@@ -60,7 +60,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                         currentWeather === "cloudy" || currentWeather === "rain" || currentWeather === "snow" || currentWeather === "fog" ? (
                                 null
                             ) : (
-                                    <div className="sun">
+                                    <div className="sun" key={"sun"}>
                                         <div className="ray-container">
                                             <div className="ray ray1"></div>
                                             <div className="ray ray2"></div>

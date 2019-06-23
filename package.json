@@ -8,6 +8,7 @@
     "d3": "^5.9.2",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
+    "react-browser-hooks": "^2.2.3",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "weather-underground-icons": "^1.0.0"
