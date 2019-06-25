@@ -57,7 +57,7 @@ const Background = ({ dayOrNight, currentWeather }) => {
                             </div>
                         </>
                     ) : (
-                        currentWeather === "cloudy" || currentWeather === "rain" || currentWeather === "snow" || currentWeather === "fog" ? (
+                            currentWeather === "cloudy" || currentWeather === "rain" || currentWeather === "snow" || currentWeather === "fog" ? (
                                 null
                             ) : (
                                     <div className="sun" key={"sun"}>
