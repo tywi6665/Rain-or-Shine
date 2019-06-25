@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useGeolocation } from "react-browser-hooks";
+import useGeolocation from "./hooks/useGeolocation";
 import Background from './components/Background/Background';
 import Container from "./components/Container";
 import WeatherIcon from "./components/WeatherIcon";
@@ -12,12 +12,15 @@ import './App.scss';
 
 function App() {
 
+  const state = useGeolocation();
+
   const [currentWeather, setCurrentWeather] = useState(null);
   const [dailyWeather, setDailyWeather] = useState(null);
   const [dayOrNight, setDayOrNight] = useState("");
   const [isMetric, setIsMetric] = useState(false);
-  const [location, setLocation] = useState("Denver");
-  const [geolocation, setGeolocation] = useState({ lat: "39.7392", lng: "-104.9903" })
+  const [location, setLocation] = useState("Current Location");
+  const [geolocation, setGeolocation] = useState({ lat: null, lng: null })
+  // const [geolocation, setGeolocation] = useState({ lat: "39.7392", lng: "-104.9903" })
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -27,35 +30,26 @@ function App() {
   }, []);
 
   useEffect(() => {
-    API.getWeather(geolocation)
-      .then(res => {
-        let currently = res.data.currently;
-        let daily = res.data.daily.data;
-        currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
-        setDailyWeather(daily);
-        setCurrentWeather(currently);
-        let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
-        if (modifiedCurrentTime > daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
-          setDayOrNight("day");
-        } else {
-          setDayOrNight("night");
-        }
-      })
-  }, [geolocation]);
-
-  // const { position, error } = useGeolocation()
-  // if (error) {
-  //   throw error
-  // }
-  // console.log({ lat: position.coords.latitude, lng: position.coords.longitude })
-
-// useGeolocation((position, error) => {
-  //   if (error) {
-  //     return
-  //   }
-  //   setGeolocation({ lat: position.coords.latitude, lng: position.coords.longitude })
-  //   console.log(position);
-  // }, [])
+    if (!geolocation.lat) {
+      setGeolocation({ lat: state.lat, lng: state.lng })
+    }
+    if (geolocation.lat) {
+      API.getWeather(geolocation)
+        .then(res => {
+          let currently = res.data.currently;
+          let daily = res.data.daily.data;
+          currently.icon = currently.icon.replace(/-/g, "").replace("day", "").replace("night", "");
+          setDailyWeather(daily);
+          setCurrentWeather(currently);
+          let modifiedCurrentTime = Number(Date.now().toString().slice(0, 10));
+          if (modifiedCurrentTime > daily[0].sunriseTime && modifiedCurrentTime < daily[0].sunsetTime) {
+            setDayOrNight("day");
+          } else {
+            setDayOrNight("night");
+          }
+        })
+    }
+  }, [geolocation, state.lat, state.lng]);
 
   function degToCardinal(windBearing) {
     const cardinalDirections = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
@@ -101,6 +95,7 @@ function App() {
         <Background
           dayOrNight={dayOrNight}
           currentWeather={currentWeather.icon}
+          key={currentWeather.icon}
         />
       ) : (
           ""
