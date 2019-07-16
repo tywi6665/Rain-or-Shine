@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Rain-or-Shine/precache-manifest.5340e7b5c06098860c93b4978155838b.js"
+  "/Rain-or-Shine/precache-manifest.35a9d87a519a667c0b5cdef359ac1979.js"
 );
 
 self.addEventListener('message', (event) => {

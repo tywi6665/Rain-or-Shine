@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9165d6049ff504607b8491ec7f291592",
+    "revision": "8e87f02bae29914de7f06695523069b6",
     "url": "/Rain-or-Shine/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Rain-or-Shine/static/css/2.45073e06.chunk.css"
   },
   {
-    "revision": "8b53d81b183b707c6779",
-    "url": "/Rain-or-Shine/static/css/main.1534476c.chunk.css"
+    "revision": "51fe78cebf1c23ea9646",
+    "url": "/Rain-or-Shine/static/css/main.9f131417.chunk.css"
   },
   {
     "revision": "99dffd990a2c106bfb01",
     "url": "/Rain-or-Shine/static/js/2.502acb27.chunk.js"
   },
   {
-    "revision": "8b53d81b183b707c6779",
-    "url": "/Rain-or-Shine/static/js/main.954ac873.chunk.js"
+    "revision": "51fe78cebf1c23ea9646",
+    "url": "/Rain-or-Shine/static/js/main.62b000db.chunk.js"
   },
   {
     "revision": "ebb0ed56142ffe560593",
