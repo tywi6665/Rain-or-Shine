@@ -31,7 +31,9 @@ function App() {
 
   useEffect(() => {
     if (!geolocation.lat) {
-      setGeolocation({ lat: state.lat, lng: state.lng })
+      setGeolocation({ lat: state.lat, lng: state.lng });
+      setLocation(state.location);
+      // alert("The search feature of this application requires access to your browsers geolocation. Please enable.")
     }
     if (geolocation.lat) {
       API.getWeather(geolocation)
@@ -61,6 +63,7 @@ function App() {
     e.preventDefault();
     API.getGeocode(location)
       .then(res => {
+        console.log(res)
         setGeolocation(res.data.results[0].geometry.location);
       })
   }

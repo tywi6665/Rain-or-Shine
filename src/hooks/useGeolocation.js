@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 const useGeolocation = () => {
     const [state, setState] = useState({
         lat: null,
-        lng: null
+        lng: null,
+        location: null
     });
 
     let mounted = true;
@@ -19,7 +20,7 @@ const useGeolocation = () => {
     };
 
     const onEventError = (error) => {
-        mounted && setState({ lat: "39.7392", lng: "-104.9903" });
+        mounted && setState({ lat: "39.7392", lng: "-104.9903", location: "Denver" });
     }
 
     useEffect(() => {
