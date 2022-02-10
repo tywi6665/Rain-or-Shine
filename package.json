@@ -8,7 +8,7 @@
     "axios": "^0.18.0",
     "d3": "^5.9.2",
     "gh-pages": "^2.0.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-browser-hooks": "^2.2.3",
     "react-dom": "^16.8.6",
